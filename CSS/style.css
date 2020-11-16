@@ -1,8 +1,6 @@
-p {
-    color: white;
-}
 body {
     background-color: black;
+    color: white;
 }
 #inventaire{
     display: none;
@@ -14,4 +12,18 @@ body {
     border: 5px solid white;
     padding: 10px;
     margin: auto;
+}
+#inventaire_head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#title{
+    background-color: black;
+    /*font-family:Cursive;*/
+    font-size:22pt;
+    color:white;
+    border-style: none;
+    border-color:white;
 }

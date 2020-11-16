@@ -5,27 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./../CSS/style.css">
     <title>Jeu textuel</title>
 </head>
 
 <body>
     <div class="description">
-        <p>
-            Description Placeholder
-        </p>
+        <div class="entrance" id="x0" id="y0">
+            <p>
+                Bienvenue dans l'entrée du donjon !! <br>
+                Les chemins disponibles : <br>
+                -A droite <br>
+                -A gauche <br>
+                -Derrière <br>
+                Que voulez-vous faire ?
+            </p>
+        </div>
+        <div class="trapped_corridor" id="x1" id="y0">
+
+        </div>
     </div>
     <input type="text" placeholder="Entrez la commande" id="commande"></input>
     <button id="myBtn">OK</button>
-    <div id= "inventaire">
-        <button id="crossButton">X</button>
+    <div id="inventaire">
+        <div id="inventaire_head">
+            <button id="crossButton">X</button>
+            <h2>INVENTAIRE</h2>
+        </div>
         <table id="inventoryList">
 
         </table>
     </div>
 
-    
+
 </body>
 <script type="text/javascript" src="./../JS/script.js"></script>
 
