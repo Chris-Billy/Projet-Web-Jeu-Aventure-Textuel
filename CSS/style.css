@@ -40,13 +40,16 @@ input {
     font-family: 'Press Start 2P', cursive;
     font-size: 24px;
     padding: 10px;
+    /* width: 80%; */
 }
-form { position: fixed; bottom: 0; }
+#form { 
+    position: fixed; 
+    bottom: 0; 
+}
 table{
     border-collapse: collapse;
     display: flex;
-    justify-content: center;
-    
+    justify-content: center;  
 }
 tr{
     width: 100%;

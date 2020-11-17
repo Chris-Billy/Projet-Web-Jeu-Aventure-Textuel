@@ -1,4 +1,10 @@
 const myInput = document.getElementById('commande');
+myInput.onkeydown = function (event) {
+    if (event.which == 13) {
+        commande();
+        myInput.value = '';
+    }
+}
 
 const Button = document.getElementById('myBtn');
 Button.addEventListener('click', commande);
