@@ -4,12 +4,13 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 #inventaire{
+    z-index: 99;
     display: none;
     justify-content: center;
     align-items: center;
     background-color: black;
     width: 600px;
-    height: 600px;
+    /* height: 600px; */
     border: 5px solid white;
     padding: 10px;
     margin: auto;
@@ -44,7 +45,7 @@ input {
 }
 #form { 
     position: fixed; 
-    bottom: 0; 
+    bottom: 5px; 
 }
 table{
     border-collapse: collapse;
@@ -65,5 +66,7 @@ td{
 }
 #descriptionObjet{
     border: 1px solid white;
-    height: 50%;
+    height: 150px;
+    width: 85%;
+    margin: auto;
 }

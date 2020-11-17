@@ -31,12 +31,12 @@ class Character {
 //Fonction cotenant le switch de toutes les commandes disponibles avec l'input
 function commande() {
     let commande = myInput.value;
-    console.log(commande)
+    console.log(commande);
 
     switch (commande) {
         case 'attaquer':
             PersoPpal.attaquer(Boss);
-            console.log(Boss.life)
+            console.log(Boss.life);
             break;
         //Permet d'ouvrir l'inventaire
         case 'inventaire':
