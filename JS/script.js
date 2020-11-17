@@ -24,15 +24,46 @@ function commande() {
             Inventory.style.display = 'block';
             break;
 
-        case 'droite':
-            window.alert('Vous allez tourner à droite !')
+        case 'est':
+            window.alert('Vous allez tourner à droite !');
             x++;
+            if (x > 2) {
+                window.alert("Vous ne pouvez pas aller plus loin.");
+                x = 2;
+            }
             localStorage.setItem('x', x);
+            roomScripts();
             break;
-        case 'gauche':
+        case 'ouest':
             window.alert('Vous allez tourner à gauche !')
             x--;
+            if (x < -2) {
+                window.alert("Vous ne pouvez pas aller plus loin.");
+                x = -2;
+            }
             localStorage.setItem('x', x);
+            roomScripts();
+            break;
+        case 'nord':
+            window.alert('Vous allez avancer !');
+            if (y > 2) {
+                window.alert("Vous ne pouvez pas aller plus loin");
+                y = 2;
+            }
+            y++;
+            localStorage.setItem('y', y)
+            roomScripts();
+            break;
+
+        case 'sud':
+            window.alert('Vous allez reculez !')
+            y--;
+            if (y < -2) {
+                window.alert("Vous ne pouvez pas aller plus loin.");
+                y = -2;
+            }
+            localStorage.setItem('y', y)
+            roomScripts();
             break;
         default:
             window.alert('Veuillez rentrer une commande valide.')
