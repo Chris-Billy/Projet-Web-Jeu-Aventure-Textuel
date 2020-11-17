@@ -20,14 +20,29 @@ class Character {
         this.life = life;
         this.attack = attack;
     }
-}
+    attaquer(ennemy) {
+        ennemy.life = ennemy.life - this.attack;
+
+    }
+
+};
+
+let PersoPpal = new Character(50, 5);
+let Boss = new Character(50, 5);
+
 //----------------------------------------
+
+//
+
 function commande() {
     let commande = myInput.value;
     console.log(commande)
 
     switch (commande) {
-
+        case 'attaquer':
+            PersoPpal.attaquer(Boss);
+            console.log(Boss.life)
+            break;
         //Permet d'ouvrir l'inventaire
         case 'inventaire':
             Inventory.style.display = 'block';
@@ -182,3 +197,4 @@ function commande() {
             break;
     }
 }
+
