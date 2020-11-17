@@ -30,6 +30,7 @@ body {
     border-color:white;
     font-family: 'Press Start 2P', cursive;
 }
+<<<<<<< HEAD
 
 
 input {
@@ -42,3 +43,25 @@ input {
     padding: 10px;
 }
 form { position: fixed; bottom: 0; }
+=======
+table{
+    border-collapse: collapse;
+    display: flex;
+    justify-content: center;
+    
+}
+tr{
+    width: 100%;
+}
+td{
+    
+    border: 1px solid white;
+    
+    padding:50px;
+
+}
+#descriptionObjet{
+    border: 1px solid white;
+    height: 50%;
+}
+>>>>>>> a6d71a51bc2df90749cb1e0f253ffc8651bd9880
