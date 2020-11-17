@@ -52,11 +52,16 @@ table{
     justify-content: center;  
 }
 tr{
-    width: 100%;
+    width: 6.2em;
+    height: 6.2em;
 }
 td{
     border: 1px solid white;
-    padding:50px;
+    width: 6.2em;
+    height: 6.2em;
+    text-align: center;
+
+
 }
 #descriptionObjet{
     border: 1px solid white;
