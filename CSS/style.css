@@ -30,3 +30,15 @@ body {
     border-color:white;
     font-family: 'Press Start 2P', cursive;
 }
+
+
+input {
+    background-color: #000;
+    border: 1px solid #000;
+    color: white;
+    padding: 8px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    padding: 10px;
+}
+form { position: fixed; bottom: 0; }

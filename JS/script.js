@@ -21,7 +21,9 @@ class Character {
         this.attack = attack;
     }
 }
-//----------------------------------------
+
+//Fonction cotenant le switch de toutes les commandes disponibles avec l'input
+
 function commande() {
     let commande = myInput.value;
     console.log(commande)
@@ -182,3 +184,5 @@ function commande() {
             break;
     }
 }
+
+
