@@ -10,7 +10,20 @@ crossButton.addEventListener('click', () => Inventory.style.display = 'none')
 
 //Variables de déplacements
 let x = 0;
+localStorage.setItem('x', x);
 let y = 0;
+localStorage.setItem('y', y);
+
+//Classe de Personnages
+class Character{
+    constructor(life, attack){
+       this.life = life;
+       this.attack = attack; 
+    }
+}
+
+
+
 
 //Fonction cotenant le switch de toutes les commandes disponibles avec l'input
 function commande() {
@@ -46,12 +59,12 @@ function commande() {
             break;
         case 'nord':
             window.alert('Vous allez avancer !');
+            y++;
             if (y > 2) {
                 window.alert("Vous ne pouvez pas aller plus loin");
                 y = 2;
             }
-            y++;
-            localStorage.setItem('y', y)
+            localStorage.setItem('y', y);
             roomScripts();
             break;
 
@@ -66,7 +79,7 @@ function commande() {
             roomScripts();
             break;
         default:
-            window.alert('Veuillez rentrer une commande valide.')
+            window.alert('Veuillez rentrer une commande valide.');
             break;
     }
 
