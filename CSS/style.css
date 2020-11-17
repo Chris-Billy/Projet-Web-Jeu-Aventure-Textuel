@@ -1,6 +1,7 @@
 body {
     background-color: black;
     color: white;
+    font-family: 'Press Start 2P', cursive;
 }
 #inventaire{
     display: none;
@@ -12,6 +13,7 @@ body {
     border: 5px solid white;
     padding: 10px;
     margin: auto;
+    font-family: 'Press Start 2P', cursive;
 }
 #inventaire_head{
     display: flex;
@@ -26,4 +28,5 @@ body {
     color:white;
     border-style: none;
     border-color:white;
+    font-family: 'Press Start 2P', cursive;
 }
