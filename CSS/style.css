@@ -42,6 +42,7 @@ input {
     padding: 10px;
 }
 form { position: fixed; bottom: 0; }
+
 table{
     border-collapse: collapse;
     display: flex;
@@ -49,11 +50,16 @@ table{
     
 }
 tr{
-    width: 100%;
+    width: 6.2em;
+    height: 6.2em;
 }
 td{
     border: 1px solid white;
-    padding:50px;
+    width: 6.2em;
+    height: 6.2em;
+    text-align: center;
+
+
 }
 #descriptionObjet{
     border: 1px solid white;
