@@ -63,9 +63,10 @@ function commande() {
         case 'clef':
             switch (position) {
                 case room[0]:
-                    if (clef2) {
+                    if (clef2 === true) {
                         porteNordUnlocked = true;
                         window.alert("La porte est déverrouillée");
+                        console.log(clef2);
                         break;
                     }
                     else {
@@ -73,7 +74,7 @@ function commande() {
                         break;
                     }
                 case room[3]:
-                    if (clef2) {
+                    if (clef2 === true) {
                         porteDeCelluleUnlocked = true;
                         window.alert("La porte est déverrouillée");
                         break;
@@ -83,7 +84,7 @@ function commande() {
                         break;
                     }
                 case room[4]:
-                    if (clef2) {
+                    if (clef2 === true) {
                         window.alert("Elle est dans votre main");
                         break;
                     }
@@ -93,7 +94,7 @@ function commande() {
                         break;
                     }
                 default:
-                    if (clef2) {
+                    if (clef2 === true) {
                         window.alert("Elle ne vous servira à rien ici")
                         break;
                     }
@@ -110,7 +111,7 @@ function commande() {
                 case 'nord':
                     switch (position) {
                         case room[0]:
-                            if (porteNordUnlocked) {
+                            if (porteNordUnlocked === true) {
                                 position = room[11];
                                 console.log(position);
                                 break;
