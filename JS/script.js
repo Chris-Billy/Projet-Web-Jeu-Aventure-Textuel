@@ -1,3 +1,4 @@
+// Valide l'input si on appuie sur la touche "entrée"
 const myInput = document.getElementById('commande');
 myInput.onkeydown = function (event) {
     if (event.which == 13) {
@@ -21,7 +22,6 @@ RoomText();
 
 const clef = document.getElementById("descriptionObjet");
 clef.addEventListener('click', descriptionObjet)
-
 
 //Classe de Personnages
 class Character {
@@ -48,12 +48,10 @@ function commande() {
 
     switch (commande) {
 
-
         case 'attaquer':
             PersoPpal.attaquer(Boss);
             console.log(Boss.life);
             break;
-
 
         //Permet d'ouvrir l'inventaire
         case 'inventaire':
@@ -316,7 +314,6 @@ function commande() {
     }
 }
 
-
 //Desscription des objets de l'inventaire
 function ChangeDescrption(event) {
     console.log(event.target.id)
@@ -349,7 +346,9 @@ function RoomText() {
             room[i].style.display = 'block';
         }
         else {
-            room[i].style.display = 'none';
+            if (room[i].style.display !== 'none'){
+                room[i].style.display = 'none';
+            }
         }
     }
 }
