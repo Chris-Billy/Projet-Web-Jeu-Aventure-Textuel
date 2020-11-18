@@ -38,6 +38,11 @@ class Character {
 let PersoPpal = new Character(50,5);
 let Boss = new Character(50, 5);
 
+//Variables relatives à la clef
+let clef = new Boolean (false);
+let porteNordUnlocked = new Boolean (false);
+let porteDeCelluleUnlocked = new Boolean (false);
+
 //Fonction cotenant le switch de toutes les commandes disponibles avec l'input
 function commande() {
     let commande = myInput.value;
@@ -57,13 +62,65 @@ function commande() {
             Inventory.style.display = 'block';
             break;
 
+        // Gestion de la clef
+        case 'clef':
+            switch (position) {
+                case room[0]:
+                    if (clef) {
+                        porteNordUnlocked = true;
+                        window.alert("La porte est déverrouillée");
+                        break;
+                    }
+                    else {
+                        window.alert("Vous n'avez pas la clef");
+                        break;
+                    }
+                case room[3]:
+                    if (clef) {
+                        porteDeCelluleUnlocked = true;
+                        window.alert("La porte est déverrouillée");
+                        break;
+                    }
+                    else {
+                        window.alert("Vous n'avez pas la clef");
+                        break;
+                    }
+                case room[4]:
+                    if (clef) {
+                        window.alert("Elle est dans votre main");
+                        break;
+                    }
+                    else {
+                        clef = true;
+                        window.alert("Vous trouvez une clef");
+                        break;
+                    }
+                default :
+                    if (clef) {
+                        window.alert("Elle ne vous servira à rien ici")
+                        break;
+                    }
+                    else {
+                        window.alert("Vous n'avez pas de clef")
+                        break;
+                    }
+                
+
+
 
         case 'nord':
             switch (position) {
                 case room[0]:
-                    position = room[11];
-                    console.log(position);
-                    break;
+                    if (porteNordUnlocked) {
+                        position = room[11];
+                        console.log(position);
+                        break;
+                    }
+                    else {
+                        position = room[0];
+                        window.alert("La porte est verrouillée");
+                        break;
+                    }
                 case room[1]:
                     position = room[0];
                     console.log(position);
