@@ -79,3 +79,6 @@ td{
 .room {
     display: none;
 }
+#gameOver{
+    display:none;
+}

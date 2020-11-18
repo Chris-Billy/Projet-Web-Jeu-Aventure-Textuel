@@ -10,6 +10,7 @@ const Button = document.getElementById('myBtn');
 Button.addEventListener('click', commande);
 
 const Inventory = document.getElementById('inventaire');
+const gameOverScreen = document.getElementById('gameOver');
 
 const crossButton = document.getElementById('crossButton');
 crossButton.addEventListener('click', () => Inventory.style.display = 'none')
@@ -30,7 +31,12 @@ class Character {
         this.life = life;
         this.attack = attack;
     }
+    attaquer(object){
+        object.life = object.life - this.attack;
+    }
 }
+let PersoPpal = new Character(50,5);
+let Boss = new Character(50, 5);
 
 //Fonction cotenant le switch de toutes les commandes disponibles avec l'input
 function commande() {
@@ -38,10 +44,14 @@ function commande() {
     console.log(commande);
 
     switch (commande) {
+
+        
         case 'attaquer':
             PersoPpal.attaquer(Boss);
             console.log(Boss.life);
             break;
+
+
         //Permet d'ouvrir l'inventaire
         case 'inventaire':
             Inventory.style.display = 'block';
@@ -197,6 +207,7 @@ function commande() {
     }
 }
 
+//Desscription des objets de l'inventaire
 function ChangeDescrption(event){
     console.log(event.target.id)
     if(event.target.id.includes("clef") === true){
@@ -212,4 +223,11 @@ function ChangeDescrption(event){
         clef.innerHTML = 'Sélectionne un objet'
     }
 
+}
+
+//GameOver t'as capté
+function verifLife(object) {
+    if(object.life<=0){
+        gameOverScreen.style.display = 'block'
+    }
 }
