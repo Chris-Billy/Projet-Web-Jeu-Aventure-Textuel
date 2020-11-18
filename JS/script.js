@@ -29,17 +29,30 @@ class Character {
         this.life = life;
         this.attack = attack;
     }
-    attaquer(object) {
-        object.life = object.life - this.attack;
+    attaquer(object1, object2) {
+        object2.life = object2.life - this.attack;
+        this.gameOverMethod(object2.life)
+    }
+    gameOverMethod(life) {
+        if (life <= 0) {
+            window.alert('lennemie est mort');
+        }
     }
 }
 let PersoPpal = new Character(50, 5);
 let Boss = new Character(50, 5);
+let Gobelin = new Character(25, 2);
+let Garde = new Character(35, 4);
 
 //Variables relatives à la clef
 let clef2 = new Boolean(false);
 let porteNordUnlocked = new Boolean(false);
 let porteDeCelluleUnlocked = new Boolean(false);
+
+//Variables relatives aux combats
+let deadGobelin = new Boolean(false);
+let deadGarde = new Boolean(false);
+let deadBoss = new Boolean(false);
 
 //Fonction cotenant le switch de toutes les commandes disponibles avec l'input
 function commande() {
@@ -49,8 +62,43 @@ function commande() {
     switch (commande) {
 
         case 'attaquer':
-            PersoPpal.attaquer(Boss);
-            console.log(Boss.life);
+            switch (position) {
+                case room[2]:
+                    if (Garde.life<=0) {
+                        deadGarde = true;
+                    }
+                    if (deadGarde == true) {
+                        window.alert('Le garde est déja mort');
+                        break;
+                    }
+                    fight(PersoPpal, Garde);
+                    break;
+                case room[7]:
+                    if (Gobelin.life<=0) {
+                        deadGobelin = true;
+                    }
+                    if (deadGobelin == true) {
+                        window.alert('Le gobelin est déja mort');
+                        break;
+                    }
+                    fight(PersoPpal, Gobelin);
+                    
+                    break;
+                case room[9]:
+                    if (Boss.life<=0) {
+                        deadBoss = true;
+                    }
+                    if (deadBoss == true) {
+                        window.alert('Le Boss est déja mort');
+                        break;
+                    }
+                    fight(PersoPpal, Boss);
+                    break;
+
+                default:
+                    window.alert('Tu veux ataquer qui ? Le mur ?');
+                    break;
+            }
             break;
 
         //Permet d'ouvrir l'inventaire
@@ -303,11 +351,11 @@ function commande() {
                     break;
             }
             break;
-        
-        case'quitter':
-            window.location.href ='main.html';
+
+        case 'quitter':
+            window.location.href = 'main.html';
             break;
-        
+
         default:
             window.alert('Veuillez rentrer une commande valide.');
             break;
@@ -346,9 +394,22 @@ function RoomText() {
             room[i].style.display = 'block';
         }
         else {
-            if (room[i].style.display !== 'none'){
+            if (room[i].style.display !== 'none') {
                 room[i].style.display = 'none';
             }
         }
     }
+}
+
+//fonction combats
+function fight(object1, object2) {
+
+    window.alert('Combat engagé')
+    object1.attaquer(object1, object2);
+    if (object2.life>0) {
+        object2.attaquer(object2, object1);
+    
+    }
+    console.log(object1);
+    console.log(object2);
 }
