@@ -104,6 +104,8 @@ function commande() {
                         window.alert("Vous n'avez pas de clef")
                         break;
                     }
+                }
+                break;
 
 
 
