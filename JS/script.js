@@ -39,7 +39,7 @@ let PersoPpal = new Character(50, 5);
 let Boss = new Character(50, 5);
 
 //Variables relatives à la clef
-let clef = new Boolean(false);
+let clef2 = new Boolean(false);
 let porteNordUnlocked = new Boolean(false);
 let porteDeCelluleUnlocked = new Boolean(false);
 
@@ -66,7 +66,7 @@ function commande() {
         case 'clef':
             switch (position) {
                 case room[0]:
-                    if (clef) {
+                    if (clef2) {
                         porteNordUnlocked = true;
                         window.alert("La porte est déverrouillée");
                         break;
@@ -76,7 +76,7 @@ function commande() {
                         break;
                     }
                 case room[3]:
-                    if (clef) {
+                    if (clef2) {
                         porteDeCelluleUnlocked = true;
                         window.alert("La porte est déverrouillée");
                         break;
@@ -86,17 +86,17 @@ function commande() {
                         break;
                     }
                 case room[4]:
-                    if (clef) {
+                    if (clef2) {
                         window.alert("Elle est dans votre main");
                         break;
                     }
                     else {
-                        clef = true;
+                        clef2 = true;
                         window.alert("Vous trouvez une clef");
                         break;
                     }
                 default:
-                    if (clef) {
+                    if (clef2) {
                         window.alert("Elle ne vous servira à rien ici")
                         break;
                     }
