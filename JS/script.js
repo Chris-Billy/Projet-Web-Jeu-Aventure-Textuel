@@ -265,7 +265,7 @@ function commande() {
                     break;
             }
     }
-}
+
 
 //Desscription des objets de l'inventaire
 function ChangeDescrption(event) {
