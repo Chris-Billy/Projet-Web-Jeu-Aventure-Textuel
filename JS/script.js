@@ -6,9 +6,6 @@ myInput.onkeydown = function (event) {
     }
 }
 
-const Button = document.getElementById('myBtn');
-Button.addEventListener('click', commande);
-
 const Inventory = document.getElementById('inventaire');
 const gameOverScreen = document.getElementById('gameOver');
 
