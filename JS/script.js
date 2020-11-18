@@ -305,7 +305,11 @@ function commande() {
                     break;
             }
             break;
-
+        
+        case'quitter':
+            window.location.href ='main.html';
+            break;
+        
         default:
             window.alert('Veuillez rentrer une commande valide.');
             break;
