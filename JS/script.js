@@ -216,6 +216,10 @@ function commande() {
                             position = room[0];
                             console.log(position);
                             break;
+                        case room[10]:
+                            position = room[9];
+                            console.log(position);
+                            break;
                         case room[13]:
                             position = room[14];
                             console.log(position);
@@ -246,6 +250,10 @@ function commande() {
                             break;
                         case room[0]:
                             position = room[6];
+                            console.log(position);
+                            break;
+                        case room[9]:
+                            position = room[10];
                             console.log(position);
                             break;
                         case room[14]:
