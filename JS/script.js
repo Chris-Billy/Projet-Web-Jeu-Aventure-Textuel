@@ -18,6 +18,7 @@ const room = document.getElementsByClassName('room');
 console.log(room);
 let position = room[0];
 console.log(position);
+room[0].style.display = 'block';
 
 const clef = document.getElementById("descriptionObjet");
 clef.addEventListener('click', descriptionObjet)
