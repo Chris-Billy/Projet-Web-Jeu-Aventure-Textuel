@@ -25,7 +25,8 @@
                 - sud <br>
                 - est <br>
                 - ouest <br><br>
-                L'entrée du donjon, une salle carée avec trois couloirs à l'est, au sud et à l'ouest, ainsi qu'une porte imposante au Nord.<br><br>
+                L'entrée du donjon, une salle carée avec trois couloirs à l'est, au sud et à l'ouest, ainsi qu'une porte
+                imposante au Nord.<br><br>
                 Que voulez-vous faire ?<br>
 
             </p>
@@ -36,10 +37,11 @@
         <div class="room" id="x0y-1">
             <p>
 
-                Un couloir menant du nord vers le sud, se terminant par une porte. Une autre mène vers l'ouest et une troisième, plus dérobée, à l'est. Une armoire en mauvais état dans un coin.
+                Un couloir menant du nord vers le sud, se terminant par une porte. Une autre mène vers l'ouest et une
+                troisième, plus dérobée, à l'est. Une armoire en mauvais état dans un coin.
 
             </p>
-            
+
 
         </div>
         <!--Salle des gardes [2]
@@ -49,7 +51,7 @@
             <p>
 
                 Une salle de garnison avec une seule porte à l'est dans laquelle se repose un garde, il vous attaque.
-            
+
             </p>
 
         </div>
@@ -79,9 +81,9 @@
         <div class="room" id="x-2y0">
 
             <p>
-                
+
                 Une salle, vide, avec une seule porte à l'est
-            
+
             </p>
 
         </div>
@@ -236,17 +238,17 @@
         <!--div correspondant à la recherche de la clef dans le débarras une fois celle-ci trouvée-->
         <div class="key" id="storageKeyNo">
             <p>
-        
+
                 Elle est dans votre main.
-        
+
             </p>
         </div>
         <!--div correspondant à la découverte de la clef dans le débarras-->
         <div class="key" id="storageKey">
             <p>
-        
+
                 Vous trouvez une clef.
-        
+
             </p>
         </div>
         <!--div correspondant à la tentative d'utiliser la clef hors de contexte-->
@@ -264,7 +266,7 @@
                 Vous n'avez pas de clef.
 
             </p>
-        </div>        
+        </div>
 
     </div>
 
@@ -274,38 +276,43 @@
         <input type="text" placeholder="Entrez la commande" id="commande"></input>
     </div>
 
-    <div id="inventaire">
-        <div id="inventaire_head">
-            <button id="crossButton" onclick=ChangeDescrption(event)>X</button>
-            <h2>INVENTAIRE</h2>
+    <div id="inventaire-page">
+        <div id="inventaire">
+            <div id="inventaire_head">
+                <button id="crossButton" onclick=ChangeDescrption(event)>X</button>
+                <h2>INVENTAIRE</h2>
+            </div>
+            <br>
+            <div>
+                <p id="descriptionObjet">Sélectionne un objet</p>
+            </div>
+            <br>
+            <table id="inventoryList">
+                <tr>
+                    <td id="set1">
+                        <div class="zoom" onclick=ChangeDescrption(event)><img id="clef" src="./../img/clef.png"
+                                alt="clef" width="60%" height="80%"></div>
+                    </td>
+                    <td id="set2">
+                        <div class="zoom" onclick=ChangeDescrption(event)><img id="epee" src="./../img/sword.png"
+                                alt="épée" width="90%" height="80%"></div>
+                    </td>
+                    <td id="set3">
+                        <div class="zoom" onclick=ChangeDescrption(event)><img id="master-sword"
+                                src="./../img/master-sword.png" alt="Master" width="90%" height="70%"></div>
+                    </td>
+                    <td id="set4"></td>
+                    <td id="set5"></td>
+                </tr>
+                <tr>
+                    <td id="set6"></td>
+                    <td id="set7"></td>
+                    <td id="set8"></td>
+                    <td id="set9"></td>
+                    <td id="set10"></td>
+                </tr>
+            </table>
         </div>
-        <br>
-        <div>
-            <p id="descriptionObjet">Sélectionne un objet</p>
-        </div>
-        <br>
-        <table id="inventoryList">
-            <tr>
-                <td id="set1">
-                    <div class="zoom" onclick=ChangeDescrption(event)><img id="clef" src="./../img/clef.png" alt="clef" width="60%"
-                            height="80%"></div>
-                </td>
-                <td id="set2"><div class="zoom" onclick=ChangeDescrption(event)><img id="epee" src="./../img/sword.png" alt="épée" width="90%"
-                    height="80%"></div></td>
-                <td id="set3"><div class="zoom" onclick=ChangeDescrption(event)><img id="master-sword" src="./../img/master-sword.png" alt="Master" width="90%"
-                    height="70%"></div></td>
-                <td id="set4"></td>
-                <td id="set5"></td>
-            </tr>
-            <tr>
-                <td id="set6"></td>
-                <td id="set7"></td>
-                <td id="set8"></td>
-                <td id="set9"></td>
-                <td id="set10"></td>
-            </tr>
-        </table>
-
     </div>
     <div id="gameOver">
         <p>T'ES MORT, T'ES ÉCLATÉ</p>

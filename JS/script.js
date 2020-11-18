@@ -7,7 +7,7 @@ myInput.onkeydown = function (event) {
     }
 }
 
-const Inventory = document.getElementById('inventaire');
+const Inventory = document.getElementById('inventaire-page');
 const gameOverScreen = document.getElementById('gameOver');
 
 const crossButton = document.getElementById('crossButton');

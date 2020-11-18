@@ -3,26 +3,36 @@ body {
     color: white;
     font-family: 'Press Start 2P', cursive;
 }
-#inventaire{
-    z-index: 99;
+#inventaire-page {
     display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.849);
+}
+#inventaire{
+    display: block;
     justify-content: center;
     align-items: center;
     background-color: black;
     width: 600px;
-    /* height: 600px; */
     border: 5px solid white;
     padding: 10px;
-    margin: auto;
     font-family: 'Press Start 2P', cursive;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 20px;
-   
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#inventaire_head {
+    display: flex;
 }
 
 #inventaire_head h2{
-    text-align: center;
+    position: relative;
+    left: 15%;
+    top: -4px;
 }
 
 #title{
@@ -103,7 +113,3 @@ td{
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
 }
-.description {
-    position: absolute;
-}
-
