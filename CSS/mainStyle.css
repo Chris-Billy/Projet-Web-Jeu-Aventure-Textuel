@@ -27,12 +27,41 @@ a{
     overflow: scroll;
     width: 100%;
     height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
 }
-
-#guide_popup:target{
-    display: block;
+#crossButton{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 25px;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 40px;
+}
+#showGuide{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 25px;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
 }
 p{
     font-size: 25px;
     margin: 5%;
+    line-height: 50px;
 }
