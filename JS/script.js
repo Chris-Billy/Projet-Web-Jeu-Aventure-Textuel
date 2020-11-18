@@ -16,7 +16,8 @@ const room = document.getElementsByClassName('room');
 console.log(room);
 let position = room[0];
 console.log(position);
-room[0].style.display = 'block';
+RoomText();
+// room[0].style.display = 'block';
 
 const clef = document.getElementById("descriptionObjet");
 clef.addEventListener('click', descriptionObjet)
@@ -102,175 +103,206 @@ function commande() {
                         window.alert("Vous n'avez pas de clef")
                         break;
                     }
-                }
-                break;
+            }
+            break;
 
-
-
-
-                case 'nord':
-                    switch (position) {
-                        case room[0]:
-                            if (porteNordUnlocked === true) {
-                                position = room[11];
-                                console.log(position);
-                                break;
-                            }
-                            else {
-                                position = room[0];
-                                window.alert("La porte est verrouillée");
-                                break;
-                            }
-                        case room[1]:
-                            position = room[0];
-                            console.log(position);
-                            break;
-                        case room[3]:
-                            position = room[1];
-                            console.log(position);
-                            break;
-                        case room[6]:
-                            position = room[7];
-                            console.log(position);
-                            break;
-                        case room[8]:
-                            position = room[6];
-                            console.log(position);
-                            break;
-                        case room[11]:
-                            position = room[10];
-                            console.log(position);
-                            break;
-                        case room[13]:
-                            position = room[12];
-                            console.log(position);
-                            break;
-
-                        default:
-                            window.alert('Vous ne pouvez pas aller plus loin');
-                            console.log(position);
-                            break;
+        case 'nord':
+            switch (position) {
+                case room[0]:
+                    if (porteNordUnlocked === true) {
+                        position = room[11];
+                        console.log(position);
+                        RoomText();
+                        break;
                     }
+                    else {
+                        position = room[0];
+                        window.alert("La porte est verrouillée");
+                        RoomText();
+                        break;
+                    }
+                case room[1]:
+                    position = room[0];
+                    console.log(position);
+                    RoomText();
                     break;
-                case 'sud':
-                    switch (position) {
-                        case room[0]:
-                            position = room[1];
-                            console.log(position);
-                            break;
-                        case room[1]:
-                            position = room[3];
-                            console.log(position);
-                            break;
-                        case room[6]:
-                            position = room[8];
-                            console.log(position);
-                            break;
-                        case room[7]:
-                            position = room[6];
-                            console.log(position);
-                            break;
-                        case room[9]:
-                            position = room[10];
-                            console.log(position);
-                            break;
-                        case room[10]:
-                            position = room[0];
-                            console.log(position);
-                            break;
-                        case room[11]:
-                            position = room[0];
-                            console.log(position);
-                            break;
-                        case room[12]:
-                            position = room[13];
-                            console.log(position);
-                            break;
-
-                        default:
-                            window.alert('Vous ne pouvez pas aller plus loin');
-                            console.log(position);
-                            break;
-                    }
+                case room[3]:
+                    position = room[1];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[6]:
+                    position = room[7];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[8]:
+                    position = room[6];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[11]:
+                    position = room[10];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[13]:
+                    position = room[12];
+                    console.log(position);
+                    RoomText();
                     break;
 
-                case 'est':
-                    switch (position) {
-                        case room[0]:
-                            position = room[13];
-                            console.log(position);
-                            break;
-                        case room[1]:
-                            position = room[4];
-                            console.log(position);
-                            break;
-                        case room[2]:
-                            position = room[1];
-                            console.log(position);
-                            break;
-                        case room[5]:
-                            position = room[6];
-                            console.log(position);
-                            break;
-                        case room[6]:
-                            position = room[0];
-                            console.log(position);
-                            break;
-                        case room[10]:
-                            position = room[9];
-                            console.log(position);
-                            break;
-                        case room[13]:
-                            position = room[14];
-                            console.log(position);
-                            break;
-                        default:
-                            window.alert('Vous ne pouvez pas aller plus loin');
-                            console.log(position);
-                            break;
-                    }
-                    break;
-                case 'ouest':
-                    switch (position) {
-                        case room[13]:
-                            position = room[0];
-                            console.log(position);
-                            break;
-                        case room[4]:
-                            position = room[1];
-                            console.log(position);
-                            break;
-                        case room[1]:
-                            position = room[2];
-                            console.log(position);
-                            break;
-                        case room[6]:
-                            position = room[5];
-                            console.log(position);
-                            break;
-                        case room[0]:
-                            position = room[6];
-                            console.log(position);
-                            break;
-                        case room[9]:
-                            position = room[10];
-                            console.log(position);
-                            break;
-                        case room[14]:
-                            position = room[13];
-                            console.log(position);
-                            break;
-                        default:
-                            window.alert('Vous ne pouvez pas aller plus loin');
-                            console.log(position);
-                            break;
-                    }
-                    break;
                 default:
-                    window.alert('Veuillez rentrer une commande valide.');
+                    window.alert('Vous ne pouvez pas aller plus loin');
+                    console.log(position);
+                    RoomText();
                     break;
             }
+            break;
+
+        case 'sud':
+            switch (position) {
+                case room[0]:
+                    position = room[1];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[1]:
+                    position = room[3];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[6]:
+                    position = room[8];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[7]:
+                    position = room[6];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[9]:
+                    position = room[10];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[10]:
+                    position = room[0];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[11]:
+                    position = room[0];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[12]:
+                    position = room[13];
+                    console.log(position);
+                    RoomText();
+                    break;
+
+                default:
+                    window.alert('Vous ne pouvez pas aller plus loin');
+                    console.log(position);
+                    break;
+            }
+            break;
+
+        case 'est':
+            switch (position) {
+                case room[0]:
+                    position = room[13];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[1]:
+                    position = room[4];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[2]:
+                    position = room[1];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[5]:
+                    position = room[6];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[6]:
+                    position = room[0];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[10]:
+                    position = room[9];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[13]:
+                    position = room[14];
+                    console.log(position);
+                    RoomText();
+                    break;
+                default:
+                    window.alert('Vous ne pouvez pas aller plus loin');
+                    console.log(position);
+                    break;
+            }
+            break;
+
+        case 'ouest':
+            switch (position) {
+                case room[13]:
+                    position = room[0];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[4]:
+                    position = room[1];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[1]:
+                    position = room[2];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[6]:
+                    position = room[5];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[0]:
+                    position = room[6];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[9]:
+                    position = room[10];
+                    console.log(position);
+                    RoomText();
+                    break;
+                case room[14]:
+                    position = room[13];
+                    console.log(position);
+                    RoomText();
+                    break;
+                default:
+                    window.alert('Vous ne pouvez pas aller plus loin');
+                    console.log(position);
+                    break;
+            }
+            break;
+
+        default:
+            window.alert('Veuillez rentrer une commande valide.');
+            break;
     }
+}
 
 
 //Desscription des objets de l'inventaire
@@ -295,5 +327,17 @@ function ChangeDescrption(event) {
 function verifLife(object) {
     if (object.life <= 0) {
         gameOverScreen.style.display = 'block'
+    }
+}
+
+// Afficher le texte de la salle correspondante
+function RoomText() {
+    for (let i = 0; i < room.length; i++) {
+        if (position === room[i]) {
+            room[i].style.display = 'block';
+        }
+        else {
+            room[i].style.display = 'none';
+        }
     }
 }
