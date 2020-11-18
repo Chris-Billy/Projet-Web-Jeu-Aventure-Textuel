@@ -15,13 +15,14 @@ body {
     padding: 10px;
     margin: auto;
     font-family: 'Press Start 2P', cursive;
-    position: relative;
-    margin-top: 4em;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+   
 }
-#inventaire_head{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+
+#inventaire_head h2{
+    text-align: center;
 }
 
 #title{
@@ -102,7 +103,7 @@ td{
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
 }
-.description p{
-    position: fixed;
+.description {
+    position: absolute;
 }
 
