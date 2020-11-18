@@ -12,7 +12,9 @@
 
 <body>
     <div class="description">
-        <!--Entrée du donjon [0]-->
+        <!--Entrée du donjon [0]
+        <Possibilités à mettre en place : Si on tente d'ouvrir la porte Nord sans la clef, elle est verrouillée>
+        -->
         <div class="room" id="x0y0">
             =======================================================================================================================
 
@@ -22,63 +24,171 @@
                 -A droite <br>
                 -A gauche <br>
                 -Derrière <br>
-                Que voulez-vous faire ?
+                Que voulez-vous faire ?<br>
+                L'entrée du donjon, une salle carée avec trois couloirs à l'est, au sud et à l'ouest, ainsi qu'une porte imposante au Nord.
+
             </p>
         </div>
-        <!--Couloir piégé 1 [1]-->
+        <!--Couloir piégé 1 [1]
+        <Possibilités à mettre en place : Si on approche de l'armoire, elle tombe sur le joueur qui pert des pv>
+        -->
         <div class="room" id="x0y-1">
+            <p>
+
+                Un couloir menant du nord vers le sud, se terminant par une porte. Une autre mène vers l'ouest et une troisième, plus dérobée, à l'est. Une armoire en mauvais état dans un coin.
+
+            </p>
 
         </div>
-        <!--Salle des gardes [2]-->
+        <!--Salle des gardes [2]
+        <Possibilités à mettre en place : Combat avec le garde, looter le corps du garde>
+        -->
         <div class="room" id="x-1y-1">
+            <p>
+
+                Une salle de garnison avec une seule porte à l'est dans laquelle se repose un garde, il vous attaque.
+            
+            </p>
 
         </div>
-        <!--Cellule (NPC) [3]-->
+        <!--Cellule (NPC) [3]
+        <Possibilités à mettre en place : Discuter avec le prisonnier, évoquer un mot clé de l'énigme au prisonnier, libérer le prisonnier avec la clef>
+        -->
         <div class="room" id="x0y-2">
+            <p>
+
+                Une geole dans laquelle semble croupir un prisonnier. La porte se trouve au nord.
+
+            </p>
 
         </div>
-        <!--Débarras (Clef) [4]-->
+        <!--Débarras (Clef) [4]
+        <Possibilités à mettre en place : Fouiller le seau pour trouver la clef, ramasser la clef une fois qu'elle a été découverte>
+        -->
         <div class="room" id="x1y-1">
+            <p>
+
+                Un genre de placard dans lequel on peut trouver des balais et des seaux. La porte se trouve à l'ouest.
+
+            </p>
 
         </div>
         <!--Salle vide [5]-->
         <div class="room" id="x-2y0">
 
+            <p>
+                
+                Une salle, vide, avec une seule porte à l'est
+            
+            </p>
+
         </div>
-        <!--Couloir avec salle secrète [6]-->
+        <!--Couloir avec salle secrète [6]
+        <Possibilités à mettre en place : Examiner la tenture pour découvrir la salle secrète, accéder à la salle secrète une fois qu'elle a été découverte>
+        -->
         <div class="room" id="x-1y0">
 
+            <p>
+
+                Un menant d'est en ouest, avec une autre porte au nord et une tenture suspecte au sud.
+
+            </p>
+
         </div>
-        <!--Couloir des gobelins [7]-->
+        <!--Salle des gobelins [7]
+        <Possibilités à mettre en place : Combat avec le gobelin, looter le corps du gobelin>
+        -->
         <div class="room" id="x-1y1">
 
-        </div>
-        <!--Salle secrète [8]-->
-        <div class="room" id="x-1y-1">
+            <p>
+
+                Une salle avec une seule porte au sud; un gobelin vous attaque.
+
+            </p>
 
         </div>
-        <!--Salle du Boss [9]-->
+        <!--Salle secrète [8]
+        <Possibilités à mettre en place : Rammasser l'épée, augmenter la stat d'attaque du personnage>
+        -->
+        <div class="room" id="x-2y-1">
+
+            <p>
+
+                Une salle plongée dans la pénombre, masquée par une tenture au nord. Une épée repose sur un socle.
+
+            </p>
+
+        </div>
+        <!--Salle du Boss [9]
+        <Possibilités à mettre en place : Combat avec le boss, écran de fin de jeu>
+        -->
         <div class="room" id="x0y3">
 
+            <p>
+
+                Une grande salle, ouvrant vers le sud, au milieu de laquelle se tient un puissant troll.
+
+            </p>
+
         </div>
-        <!--Énigme [10]-->
+        <!--Énigme [10]
+        <Possibilités à mettre en place : Dévérouiller le passage en répondant à l'énigme>
+        -->
         <div class="room" id="x0y2">
 
+            <p>
+
+                Une salle dans laquelle quelque chose au nord vous demande un truc. Vous venez du sud.
+
+            </p>
+
         </div>
-        <!--Couloir verrouillé [11]-->
+        <!--Couloir verrouillé [11]
+        <Possibilités à mettre en place : Voir que la porte est fermée, la dévérouiller avec la clef>
+        -->
         <div class="room" id="x0y1">
 
+            <p>
+
+                Un couloir ouvert vers le sud, avec une porte vérouillée au nord.
+
+            </p>
+
         </div>
-        <!--Débarras (dague) [12]-->
+        <!--Débarras (dague) [12]
+        <Possibilités à mettre en place : Fouiller le ratelier pour trouver une dague, récupérer la dague une fois découverte, augmenter la stat d'attaque du joueur>
+        -->
         <div class="room" id="x1y1">
 
-        </div>
-        <!--Couloir piégé 2 [13]-->
-        <div class="room" id="x1y0">
+            <p>
+
+                Un débarras avec une porte menant au sud, un ratelier d'armes au milieu de la pièce.
+
+            </p>
 
         </div>
-        <!--Indice Énigme [14]-->
+        <!--Couloir piégé 2 [13]
+        <Possibilités à mettre en place : Fouiller la salle pour découvrir le piège, activer le piège si le joueur entre à l'est sans l'avoir observé>
+        -->
+        <div class="room" id="x1y0">
+
+            <p>
+
+                Un couloir menant d'ouest en est, avec une porte vers le nord et un trou dans le mur au sud.
+
+            </p>
+
+        </div>
+        <!--Indice Énigme [14]
+        <Possibilités à mettre en place : Lire l'indice>
+        -->
         <div class="room" id="x2y0">
+
+            <p>
+
+                Un indice pour une énigme.
+
+            </p>
 
         </div>
     </div>
