@@ -19,6 +19,9 @@ console.log(room);
 let position = room[0];
 console.log(position);
 
+const clef = document.getElementById("descriptionObjet");
+clef.addEventListener('click', descriptionObjet)
+
 
 //Classe de Personnages
 class Character {
@@ -191,4 +194,21 @@ function commande() {
             window.alert('Veuillez rentrer une commande valide.');
             break;
     }
+}
+
+function ChangeDescrption(event){
+    console.log(event.target.id)
+    if(event.target.id.includes("clef") === true){
+        clef.innerHTML = 'Ouvre une porte <br><br> "Non jure wallah"'
+    }
+    else if (event.target.id.includes("epee") === true){
+        clef.innerHTML = 'Epée basique en fer <br><br> Pemettra surement de ce defendre'
+    }
+    else if (event.target.id.includes("master-sword") === true){
+        clef.innerHTML = 'Epée légendaire'
+    }
+    else{
+        clef.innerHTML = 'Sélectionne un objet'
+    }
+
 }
