@@ -11,17 +11,18 @@ const Inventory = document.getElementById('inventaire-page');
 const gameOverScreen = document.getElementById('gameOver');
 
 const crossButton = document.getElementById('crossButton');
-crossButton.addEventListener('click', () => Inventory.style.display = 'none')
+crossButton.addEventListener('click', () => Inventory.style.display = 'none');
 
 const room = document.getElementsByClassName('room');
 console.log(room);
 let position = room[0];
 console.log(position);
 RoomText();
-// room[0].style.display = 'block';
+
+const key = document.getElementsByClassName('key');
 
 const clef = document.getElementById("descriptionObjet");
-clef.addEventListener('click', descriptionObjet)
+clef.addEventListener('click', descriptionObjet);
 
 //Classe de Personnages
 class Character {
@@ -160,12 +161,14 @@ function commande() {
             }
             break;
 
+        // Gestion des déplacements vers le nord
         case 'nord':
             switch (position) {
                 case room[0]:
                     if (porteNordUnlocked === true) {
                         position = room[11];
                         console.log(position);
+                        TextKeyNone();
                         RoomText();
                         break;
                     }
@@ -183,6 +186,7 @@ function commande() {
                 case room[3]:
                     position = room[1];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[6]:
@@ -214,11 +218,13 @@ function commande() {
             }
             break;
 
+        // Gestion des déplacements vers le sud
         case 'sud':
             switch (position) {
                 case room[0]:
                     position = room[1];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -264,11 +270,13 @@ function commande() {
             }
             break;
 
+        // Gestion des déplacements vers l'est
         case 'est':
             switch (position) {
                 case room[0]:
                     position = room[13];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -308,6 +316,7 @@ function commande() {
             }
             break;
 
+        // Gestion des déplacements vers l'ouest
         case 'ouest':
             switch (position) {
                 case room[13]:
@@ -318,6 +327,7 @@ function commande() {
                 case room[4]:
                     position = room[1];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -333,6 +343,7 @@ function commande() {
                 case room[0]:
                     position = room[6];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[9]:
@@ -351,9 +362,10 @@ function commande() {
                     break;
             }
             break;
-
-        case 'quitter':
-            window.location.href = 'main.html';
+        
+        // Permet de quitter la partie
+        case'quitter':
+            window.location.href ='main.html';
             break;
 
         default:
@@ -398,6 +410,14 @@ function RoomText() {
                 room[i].style.display = 'none';
             }
         }
+    }
+}
+
+// Vérifie si les textes liés à la clef sont bien sur none
+function TextKeyNone() {
+    for (let i = 0; i < key.length; i++) {
+        if (key[i].style.display !== 'none')
+        key[i].style.display = 'none';
     }
 }
 
