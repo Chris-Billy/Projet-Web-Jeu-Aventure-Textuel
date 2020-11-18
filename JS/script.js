@@ -66,40 +66,48 @@ function commande() {
                 case room[0]:
                     if (clef2 === true) {
                         porteNordUnlocked = true;
+                        document.getElementById("room0Unlock").style.display = "block";
                         window.alert("La porte est déverrouillée");
                         console.log(clef2);
                         break;
                     }
                     else {
+                        document.getElementById("room0UnlockNoKey").style.display = "block";
                         window.alert("Vous n'avez pas la clef");
                         break;
                     }
                 case room[3]:
                     if (clef2 === true) {
                         porteDeCelluleUnlocked = true;
+                        document.getElementById("cellUnlock").style.display = "block";
                         window.alert("La porte est déverrouillée");
                         break;
                     }
                     else {
+                        document.getElementById("cellUnlockNoKey").style.display = "block";
                         window.alert("Vous n'avez pas la clef");
                         break;
                     }
                 case room[4]:
                     if (clef2 === true) {
+                        document.getElementById("storageKeyNo").style.display = "block";
                         window.alert("Elle est dans votre main");
                         break;
                     }
                     else {
                         clef2 = true;
+                        document.getElementById("storageKey").style.display = "block";
                         window.alert("Vous trouvez une clef");
                         break;
                     }
                 default:
                     if (clef2 === true) {
+                        document.getElementById("keyUseless").style.display = "block";
                         window.alert("Elle ne vous servira à rien ici")
                         break;
                     }
                     else {
+                        document.getElementById("generalNoKey").style.display = "block";
                         window.alert("Vous n'avez pas de clef")
                         break;
                     }

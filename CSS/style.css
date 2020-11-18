@@ -15,6 +15,8 @@ body {
     padding: 10px;
     margin: auto;
     font-family: 'Press Start 2P', cursive;
+    position: relative;
+    margin-top: 4em;
 }
 #inventaire_head{
     display: flex;
@@ -83,3 +85,24 @@ td{
 #gameOver{
     display:none;
 }
+
+.key{
+    display: none;
+}
+
+#crossButton{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 25px;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+}
+.description p{
+    position: fixed;
+}
+
