@@ -1,0 +1,30 @@
+#body{
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 800px;
+    font-size: 50px;
+}
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+#title{
+    /*font-family:Cursive;*/
+    font-size:22pt;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+#guide_popup{
+    border:5px, solid ,white;
+    display:none;
+}
+
+#guide_popup:target{
+    display: block;
+}
