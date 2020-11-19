@@ -95,6 +95,7 @@ td{
 }
 .key{
     display: none;
+    margin-top: 40px;
 }
 #crossButton{
     background-color: black;
@@ -108,12 +109,3 @@ td{
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
 }
-<<<<<<< Updated upstream
-=======
-.description p{
-    position: fixed;
-}
-
-
-
->>>>>>> Stashed changes

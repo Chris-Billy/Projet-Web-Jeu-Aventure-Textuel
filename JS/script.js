@@ -19,13 +19,7 @@ let position = room[0];
 console.log(position);
 RoomText();
 
-<<<<<<< Updated upstream
 const key = document.getElementsByClassName('key');
-=======
-
-const clef = document.getElementById("descriptionObjet");
-clef.addEventListener('click', descriptionObjet)
->>>>>>> Stashed changes
 
 const clef = document.getElementById("descriptionObjet");
 clef.addEventListener('click', descriptionObjet);
@@ -65,25 +59,22 @@ let deadBoss = new Boolean(false);
 function commande() {
     let commande = myInput.value;
     console.log(commande);
-//Effacer les précédentes commandes
-    let x = document.getElementsByClassName("key");
-        let i;
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = 'none';
-        }
+    
+    //Effacer les précédentes commandes
+    let key = document.getElementsByClassName("key");
 
-    let y = document.getElementsByClassName("room");
-        let c;
-        for (c = 0; c < y.length; c++) {
-            y[c].style.display = 'none';
+    for (let i = 0; i < x.length; i++) {
+        if (key[i].style.display !== 'none') {
+            key[i].style.display = 'none';
         }
+    }
 
     switch (commande) {
 
         case 'attaquer':
             switch (position) {
                 case room[2]:
-                    if (Garde.life<=0) {
+                    if (Garde.life <= 0) {
                         deadGarde = true;
                     }
                     if (deadGarde == true) {
@@ -93,7 +84,7 @@ function commande() {
                     fight(PersoPpal, Garde);
                     break;
                 case room[7]:
-                    if (Gobelin.life<=0) {
+                    if (Gobelin.life <= 0) {
                         deadGobelin = true;
                     }
                     if (deadGobelin == true) {
@@ -101,10 +92,10 @@ function commande() {
                         break;
                     }
                     fight(PersoPpal, Gobelin);
-                    
+
                     break;
                 case room[9]:
-                    if (Boss.life<=0) {
+                    if (Boss.life <= 0) {
                         deadBoss = true;
                     }
                     if (deadBoss == true) {
@@ -186,7 +177,6 @@ function commande() {
                     if (porteNordUnlocked === true) {
                         position = room[11];
                         console.log(position);
-                        TextKeyNone();
                         RoomText();
                         break;
                     }
@@ -204,7 +194,6 @@ function commande() {
                 case room[3]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[6]:
@@ -242,7 +231,6 @@ function commande() {
                 case room[0]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -294,7 +282,6 @@ function commande() {
                 case room[0]:
                     position = room[13];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -345,7 +332,6 @@ function commande() {
                 case room[4]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -361,7 +347,6 @@ function commande() {
                 case room[0]:
                     position = room[6];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[9]:
@@ -380,10 +365,10 @@ function commande() {
                     break;
             }
             break;
-        
+
         // Permet de quitter la partie
-        case'quitter':
-            window.location.href ='main.html';
+        case 'quitter':
+            window.location.href = 'main.html';
             break;
 
         default:
@@ -431,22 +416,14 @@ function RoomText() {
     }
 }
 
-// Vérifie si les textes liés à la clef sont bien sur none
-function TextKeyNone() {
-    for (let i = 0; i < key.length; i++) {
-        if (key[i].style.display !== 'none')
-        key[i].style.display = 'none';
-    }
-}
-
 //fonction combats
 function fight(object1, object2) {
 
     window.alert('Combat engagé')
     object1.attaquer(object1, object2);
-    if (object2.life>0) {
+    if (object2.life > 0) {
         object2.attaquer(object2, object1);
-    
+
     }
     console.log(object1);
     console.log(object2);
