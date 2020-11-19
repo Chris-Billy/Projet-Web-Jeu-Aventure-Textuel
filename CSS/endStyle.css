@@ -1,0 +1,22 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+#scrolling_text{
+    width: 80%;
+    height: 700px;
+    border: white 5px solid;
+    margin: auto;
+}
+header{
+    text-align: center;
+    margin-bottom: 10%;
+}
+div marquee{
+    margin: 5%;
+    font-size: 25px;
+    margin: 5%;
+    line-height: 50px;
+    height: 85%;
+}
