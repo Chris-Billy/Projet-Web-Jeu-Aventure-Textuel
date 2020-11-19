@@ -90,7 +90,7 @@ function commande() {
         if (key[i].style.display !== 'none') {
             key[i].style.display = 'none';
         }
-
+    }
         switch (commande) {
             case 'piege': case 'piège':
                 switch (position) {
@@ -384,7 +384,6 @@ function commande() {
                         if (porteNordUnlocked === true) {
                             position = room[11];
                             console.log(position);
-                            TextKeyNone();
                             RoomText();
                             break;
                         }
@@ -402,7 +401,6 @@ function commande() {
                     case room[3]:
                         position = room[1];
                         console.log(position);
-                        TextKeyNone();
                         RoomText();
                         break;
                     case room[6]:
@@ -440,7 +438,6 @@ function commande() {
                     case room[0]:
                         position = room[1];
                         console.log(position);
-                        TextKeyNone();
                         RoomText();
                         break;
                     case room[1]:
@@ -492,7 +489,6 @@ function commande() {
                     case room[0]:
                         position = room[13];
                         console.log(position);
-                        TextKeyNone();
                         RoomText();
                         break;
                     case room[1]:
@@ -557,7 +553,6 @@ function commande() {
                     case room[4]:
                         position = room[1];
                         console.log(position);
-                        TextKeyNone();
                         RoomText();
                         break;
                     case room[1]:
@@ -573,7 +568,6 @@ function commande() {
                     case room[0]:
                         position = room[6];
                         console.log(position);
-                        TextKeyNone();
                         RoomText();
                         break;
                     case room[9]:
@@ -602,7 +596,6 @@ function commande() {
                 window.alert('Veuillez rentrer une commande valide.');
                 break;
         }
-    }
 }
 
 //Permet d'avoir un int aléatoire
@@ -649,14 +642,6 @@ function RoomText() {
                 room[i].style.display = 'none';
             }
         }
-    }
-}
-
-// Vérifie si les textes liés à la clef sont bien sur none
-function TextKeyNone() {
-    for (let i = 0; i < key.length; i++) {
-        if (key[i].style.display !== 'none')
-            key[i].style.display = 'none';
     }
 }
 
