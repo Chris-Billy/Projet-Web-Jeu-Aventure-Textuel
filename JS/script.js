@@ -9,9 +9,9 @@ myInput.onkeydown = function (event) {
         myInput.value = '';
     }
     // Si touche "flêche du haut" est appuyé : rappelle l'ancienne valeur dans l'input
-    if (event.which == 38) {
-        myInput.value = stockage;
-    }
+    //if (event.which == 38) {
+       // myInput.value = stockage;
+    //}
 }
 
 const Inventory = document.getElementById('inventaire-page');
@@ -120,7 +120,7 @@ function commande() {
                             document.getElementById("piegeSucces").style.display = "block";
                             console.log(PersoPpal);
                         } else {
-                            window.alert("Vous n'avez pas réussi à désarmer le piège")
+                            document.getElementById("piegeFailure").style.display = "block";
                             PersoPpal.life = PersoPpal.life - 15;
                             trapActivated = true;
                             console.log(PersoPpal);
@@ -132,25 +132,25 @@ function commande() {
                     break;
                 case room[1]:
                     if (trapActivated2 == true) {
-                        window.alert("Le piège est déja désactivé")
+                        document.getElementById("piegeNeutralized").style.display = "block";
                         console.log(PersoPpal);
                     } else if (trapSeen2 == true) {
-                        window.alert('Vous essayez de désarmer le piège')
+                        document.getElementById("piegeNeutralizing").style.display = "block";
                         let trapTry = getRandomInt(3);
                         console.log(trapTry);
                         console.log(PersoPpal);
                         if (trapTry == 3 || trapTry == 0) {
                             trapActivated2 = true;
-                            window.alert("Le piège est désarmé")
+                            document.getElementById("piegeSucces").style.display = "block";
                             console.log(PersoPpal);
                         } else {
-                            window.alert("Vous n'avez pas réussi à désarmer le piège")
+                            document.getElementById("piegeFailure").style.display = "block";
                             PersoPpal.life = PersoPpal.life - 15;
                             trapActivated2 = true;
                             console.log(PersoPpal);
                         }
                     } else {
-                        window.alert("Vous n'avez pas vu de piège")
+                        document.getElementById("checkTrapFailed").style.display = "block";
                         console.log(PersoPpal);
                     }
                     break;
@@ -188,16 +188,16 @@ function commande() {
                 case room[2]:
                     if (deadGarde == true) {
                         if (swordPossessed === true) {
-                            window.alert('Vous avez déjà ramassé l\'épée')
+                            document.getElementById("swordAllready").style.display = "block";
                         } else {
                             swordPossessed = true;
-                            window.alert('Vous ramassez l\'épée')
+                            document.getElementById("swordGrab").style.display = "block";
                             console.log("votre attack avant : " + PersoPpal.attack);
                             PersoPpal.attack += 4;
                             console.log("votre attack après : " + PersoPpal.attack);
                         }
                     } else {
-                        window.alert('Pour prendre l\'épée, il faut vaincre les gardes')
+                        document.getElementById("swordFight").style.display = "block";
                     }
                 case room[8]:
                     document.getElementById("swordCheh").style.display = "block";
@@ -217,14 +217,14 @@ function commande() {
         case 'farfouiller':
             switch (position) {
                 case room[1]:
-                    window.alert("Vous remarquez un piège près du côté sud");
+                    document.getElementById("checkTrapSucces").style.display = "block";
                     trapSeen2 = true;
                     break;
                 case room[2]:
                     if (swordIsUnlocked == true) {
-                        window.alert('Vous pourriez être intéressé par l\'épée que les gardes ont laissé derrière eux');
+                        document.getElementById("findSword").style.display = "block";
                     } else {
-                        window.alert("La seule qui pourrait vous intéresser ici est l'épée que détiennent les gardes");
+                        document.getElementById("findSwordFight").style.display = "block";
                     }
                     break;
                 case room[4]:
@@ -285,7 +285,7 @@ function commande() {
                         if (Garde.life <= 0) {
                             deadGarde = true;
                             swordIsUnlocked = true;
-                            window.alert('Vous venez de tuer les gardes , vous remarquez qu\'ils laissent tomber un objet.');
+                            document.getElementById("swordDrop").style.display = "block";
                         }
                         if (PersoPpal.life <= 0) {
                             gameOverScreen.style.display = 'block';
@@ -752,7 +752,7 @@ function commande() {
             document.getElementById("invalidCommand").style.display = "block";
             break;
     }
-}
+
 
 //Permet d'avoir un int aléatoire
 function getRandomInt(max) {
