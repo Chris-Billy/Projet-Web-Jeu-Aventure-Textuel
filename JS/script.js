@@ -70,7 +70,40 @@ function commande() {
     }
 
     switch (commande) {
+        case 'fouiller':
+            switch (position) {
+                case room[4]:
+                    window.alert('Lors de la fouille du débaras, vous remarquez une clef');
+                    break;
+                case room[8]:
+                    window.alert('Vous decidez de fouiller la salle secrète, il s\'y trouve une épée assez particulière.\n Bon c\'est l\'épée légendaire fait pas genre t\'as pas compris');
 
+                    break;
+                case room[12]:
+                    window.alert('Lors de la fouille du débarras, vous notez qu\'il n\'y a rien d\'intéressant, hormis une petite dague.');
+                    break;
+
+                default:
+                    let random = getRandomInt(2);
+                    switch (random) {
+                        case 0:
+                            window.alert("Vous ne trouvez rien d'intéréssant");
+                            break;
+
+                        case 1 :
+                            window.alert("Malgré la fouille, il n'y a rien qui sucite votre intérêt");
+                            break
+
+                        default:
+                            window.alert("Cette vous à menez à quelque chose");
+                            window.alert("Rien");
+                            console.log(random);
+                            break;
+                    }
+                    break;
+            }
+            break;
+        //Permet d'attaquer la cible actuelle
         case 'attaquer':
             switch (position) {
                 case room[2]:
@@ -376,6 +409,10 @@ function commande() {
             break;
     }
 }
+//Permet d'avoir un int aléatoire
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 
 //Desscription des objets de l'inventaire
 function ChangeDescrption(event) {
