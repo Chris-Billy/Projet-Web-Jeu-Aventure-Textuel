@@ -19,7 +19,9 @@ let position = room[0];
 console.log(position);
 RoomText();
 
+
 const key = document.getElementsByClassName('key');
+
 
 const clef = document.getElementById("descriptionObjet");
 clef.addEventListener('click', descriptionObjet);
@@ -63,6 +65,10 @@ let clef2 = new Boolean(false);
 let porteNordUnlocked = new Boolean(false);
 let porteDeCelluleUnlocked = new Boolean(false);
 
+//Variables relatives à l'énigme
+let enigme = new Boolean(false);
+let indice = new Boolean(false);
+
 //Variables relatives aux combats
 let deadGobelin = new Boolean(false);
 let deadGarde = new Boolean(false);
@@ -77,15 +83,12 @@ let trapSeen = new Boolean(false);
 function commande() {
     let commande = myInput.value;
     console.log(commande);
-    
-    //Effacer les précédentes commandes
-    let key = document.getElementsByClassName("key");
-
-    for (let i = 0; i < key.length; i++) {
-        if (key[i].style.display !== 'none') {
-            key[i].style.display = 'none';
+//Effacer les précédentes commandes
+    let x = document.getElementsByClassName("key");
+        let i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = 'none';
         }
-    }
 
     switch (commande) {
         case 'piege': case 'piège':
@@ -186,10 +189,14 @@ function commande() {
         case 'attaquer':
             switch (position) {
                 case room[2]:
+<<<<<<< Updated upstream
                     console.log(PersoPpal);
                     console.log(Garde);
                     fight(PersoPpal, Garde);
                     if (Garde.life <= 0) {
+=======
+                    if (Garde.life<=0) {
+>>>>>>> Stashed changes
                         deadGarde = true;
                     }
                     if (PersoPpal.life <= 0){
@@ -202,7 +209,7 @@ function commande() {
 
                     break;
                 case room[7]:
-                    if (Gobelin.life <= 0) {
+                    if (Gobelin.life<=0) {
                         deadGobelin = true;
                     }
                     if (PersoPpal.life <= 0){
@@ -213,10 +220,10 @@ function commande() {
                         break;
                     }
                     fight(PersoPpal, Gobelin);
-
+                    
                     break;
                 case room[9]:
-                    if (Boss.life <= 0) {
+                    if (Boss.life<=0) {
                         deadBoss = true;
                     }
                     if (PersoPpal.life <= 0){
@@ -240,6 +247,90 @@ function commande() {
             Inventory.style.display = 'block';
             break;
 
+        //Permet de lire l'indice de l'énigme
+        case 'lire':
+            switch (position) {
+                case room [14]:
+                    position = room[14];
+                    document.getElementById("indiceEnigme").style.display = "block";
+                    indice = true;
+                    break;
+                default:
+                    position = position;
+                    document.getElementById("readNone").style.display = "block";
+                    break;
+            }
+            break;
+
+        //Permet de parler aux PNJs
+        case 'parler':
+            switch(position) {
+                case room [3]:
+                    position = room[3];
+                    if (porteDeCelluleUnlocked === true) {
+                        if (indice === true) {
+                            document.getElementById("dialPrisonnier1").style.display = "block";
+                            break;
+                        }
+                        else {
+                            document.getElementById("dialPrisonnier2").style.display = "block";
+                            break;
+                        }
+                    }
+                    else {
+                        document.getElementById("dialPrisonnier3").style.display = "block";
+                        break;
+                    }
+                case room [2]:
+                    position = room[2];
+                    if (deadGarde === true) {
+                        document.getElementById("dialGardeDead").style.display = "block";
+                        break;
+                    }
+                    else {
+                        document.getElementById("dialGarde").style.display = "block";
+                        break;
+                    }
+                case room [7]:
+                    position = room[7];
+                    if (deadGobelin === true) {
+                        document.getElementById("dialGobelinDead").style.display = "block";
+                        break;
+                    }
+                    else {
+                        document.getElementById("dialGobelin").style.display = "block";
+                        break;
+                    }
+                case room [9]:
+                    position = room[9];
+                    if (deadBoss === true) {
+                        document.getElementById("dialBossDead").style.display = "block";
+                        break;
+                    }
+                    else {
+                        document.getElementById("dialBoss").style.display = "block";
+                        break;
+                    }
+                default:
+                    position = position;
+                    document.getElementById("dialNone").style.display = "block";
+                    break;
+            }
+            break;
+
+        //Permet de gérer l'entrée de l'énigme
+        case '1793':
+            switch (position) {
+                case room[10]:
+                    enigme = true;
+                    document.getElementById("enigmeGood").style.display = "block";
+                    break;
+                default:
+                    document.getElementById("enigmeBad").style.display = "block";
+                    break;
+            }
+            break;
+
         // Gestion de la clef
         case 'clef':
             switch (position) {
@@ -247,48 +338,40 @@ function commande() {
                     if (clef2 === true) {
                         porteNordUnlocked = true;
                         document.getElementById("room0Unlock").style.display = "block";
-                        window.alert("La porte est déverrouillée");
                         console.log(clef2);
                         break;
                     }
                     else {
                         document.getElementById("room0UnlockNoKey").style.display = "block";
-                        window.alert("Vous n'avez pas la clef");
                         break;
                     }
                 case room[3]:
                     if (clef2 === true) {
                         porteDeCelluleUnlocked = true;
                         document.getElementById("cellUnlock").style.display = "block";
-                        window.alert("La porte est déverrouillée");
                         break;
                     }
                     else {
                         document.getElementById("cellUnlockNoKey").style.display = "block";
-                        window.alert("Vous n'avez pas la clef");
                         break;
                     }
                 case room[4]:
                     if (clef2 === true) {
                         document.getElementById("storageKeyNo").style.display = "block";
-                        window.alert("Elle est dans votre main");
                         break;
                     }
                     else {
                         clef2 = true;
                         document.getElementById("storageKey").style.display = "block";
-                        window.alert("Vous trouvez une clef");
                         break;
                     }
                 default:
                     if (clef2 === true) {
                         document.getElementById("keyUseless").style.display = "block";
-                        window.alert("Elle ne vous servira à rien ici")
                         break;
                     }
                     else {
                         document.getElementById("generalNoKey").style.display = "block";
-                        window.alert("Vous n'avez pas de clef")
                         break;
                     }
             }
@@ -301,6 +384,7 @@ function commande() {
                     if (porteNordUnlocked === true) {
                         position = room[11];
                         console.log(position);
+                        TextKeyNone();
                         RoomText();
                         break;
                     }
@@ -318,6 +402,7 @@ function commande() {
                 case room[3]:
                     position = room[1];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[6]:
@@ -355,6 +440,7 @@ function commande() {
                 case room[0]:
                     position = room[1];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -406,6 +492,7 @@ function commande() {
                 case room[0]:
                     position = room[13];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -429,10 +516,18 @@ function commande() {
                     RoomText();
                     break;
                 case room[10]:
-                    position = room[9];
-                    console.log(position);
-                    RoomText();
-                    break;
+                    console.log(enigme);
+                    if (enigme == false) {
+                        position = room[10];
+                        document.getElementById("bossWrong").style.display = "block";
+                        break;
+                    }
+                    else {
+                        position = room[9];
+                        console.log(position);
+                        RoomText();
+                        break;
+                    }
                 case room[13]:
                     if (trapActivated == false) {
                         window.alert('Tu as activé un piège');
@@ -462,6 +557,7 @@ function commande() {
                 case room[4]:
                     position = room[1];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -477,6 +573,7 @@ function commande() {
                 case room[0]:
                     position = room[6];
                     console.log(position);
+                    TextKeyNone();
                     RoomText();
                     break;
                 case room[9]:
@@ -495,10 +592,10 @@ function commande() {
                     break;
             }
             break;
-
+        
         // Permet de quitter la partie
-        case 'quitter':
-            window.location.href = 'main.html';
+        case'quitter':
+            window.location.href ='main.html';
             break;
 
         default:
@@ -550,14 +647,22 @@ function RoomText() {
     }
 }
 
+// Vérifie si les textes liés à la clef sont bien sur none
+function TextKeyNone() {
+    for (let i = 0; i < key.length; i++) {
+        if (key[i].style.display !== 'none')
+        key[i].style.display = 'none';
+    }
+}
+
 //fonction combats
 function fight(object1, object2) {
 
     window.alert('Combat engagé')
     object1.attaquer(object1, object2);
-    if (object2.life > 0) {
+    if (object2.life>0) {
         object2.attaquer(object2, object1);
-
+    
     }
     console.log(object1);
     console.log(object2);
