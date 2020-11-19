@@ -3,6 +3,10 @@ body {
     color: white;
     font-family: 'Press Start 2P', cursive;
 }
+#decor-top {
+    position: fixed;
+    top: 10px;
+}
 #inventaire-page {
     display: none;
     width: 100%;
@@ -24,28 +28,22 @@ body {
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
 }
-
 #inventaire_head {
     display: flex;
 }
-
 #inventaire_head h2{
     position: relative;
     left: 15%;
     top: -4px;
 }
-
 #title{
     background-color: black;
-    /*font-family:Cursive;*/
     font-size:22pt;
     color:white;
     border-style: none;
     border-color:white;
     font-family: 'Press Start 2P', cursive;
 }
-
-
 input {
     background-color: #000;
     border: none;
@@ -54,7 +52,7 @@ input {
     font-family: 'Press Start 2P', cursive;
     font-size: 24px;
     padding: 10px;
-    width: 90%;
+    width: 100%;
     text-decoration: none;
 }
 #form { 
@@ -75,8 +73,6 @@ td{
     width: 6.2em;
     height: 6.2em;
     text-align: center;
-
-
 }
 #descriptionObjet{
     border: 1px solid white;
@@ -92,15 +88,14 @@ td{
 }
 .room {
     display: none;
+    margin-top: 40px;
 }
 #gameOver{
     display:none;
 }
-
 .key{
     display: none;
 }
-
 #crossButton{
     background-color: black;
     border: none;
@@ -113,3 +108,12 @@ td{
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
 }
+<<<<<<< Updated upstream
+=======
+.description p{
+    position: fixed;
+}
+
+
+
+>>>>>>> Stashed changes

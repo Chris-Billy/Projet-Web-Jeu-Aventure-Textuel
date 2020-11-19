@@ -25,7 +25,7 @@ a{
     border: solid 5px white;
     position: relative;
     overflow: scroll;
-    width: 100%;
+    width: 90%;
     height: 500px;
     position: absolute;
     top: 50%;
