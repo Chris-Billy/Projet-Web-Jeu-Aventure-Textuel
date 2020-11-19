@@ -189,14 +189,11 @@ function commande() {
         case 'attaquer':
             switch (position) {
                 case room[2]:
-<<<<<<< Updated upstream
+
                     console.log(PersoPpal);
                     console.log(Garde);
                     fight(PersoPpal, Garde);
                     if (Garde.life <= 0) {
-=======
-                    if (Garde.life<=0) {
->>>>>>> Stashed changes
                         deadGarde = true;
                     }
                     if (PersoPpal.life <= 0){
