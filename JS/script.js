@@ -9,9 +9,9 @@ myInput.onkeydown = function (event) {
         myInput.value = '';
     }
     // Si touche "flêche du haut" est appuyé : rappelle l'ancienne valeur dans l'input
-    //if (event.which == 38) {
-       // myInput.value = stockage;
-    //}
+    if (event.which == 38) {
+        myInput.value = stockage;
+    }
 }
 
 const Inventory = document.getElementById('inventaire-page');
@@ -25,7 +25,6 @@ console.log(room);
 let position = room[0];
 console.log(position);
 RoomText();
-
 
 const key = document.getElementsByClassName('key');
 const objects = document.getElementsByClassName('objets');
@@ -95,11 +94,10 @@ let trapSeen2 = new Boolean(false);
 function commande() {
     let commande = myInput.value;
     console.log(commande);
-//Effacer les précédentes commandes
-    let x = document.getElementsByClassName("key");
-        let i;
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = 'none';
+    //Effacer les précédentes commandes
+    for (let i = 0; i < key.length; i++) {
+        if (key[i].style.display !== 'none') {
+            key[i].style.display = 'none';
         }
     }
 
@@ -110,7 +108,7 @@ function commande() {
                     if (trapActivated == true) {
                         document.getElementById("piegeNeutralized").style.display = "block";
                         console.log(PersoPpal);
-                    }else if (trapSeen == true) {
+                    } else if (trapSeen == true) {
                         document.getElementById("piegeNeutralizing").style.display = "block";
                         let trapTry = getRandomInt(3);
                         console.log(trapTry);
@@ -124,8 +122,8 @@ function commande() {
                             PersoPpal.life = PersoPpal.life - 15;
                             trapActivated = true;
                             console.log(PersoPpal);
-                        }   
-                    }else{
+                        }
+                    } else {
                         document.getElementById("piegeNone").style.display = "block";
                         console.log(PersoPpal);
                     }
@@ -168,11 +166,11 @@ function commande() {
                     } else {
                         daguePossessed = true;
                         document.getElementById("daggerGet").style.display = "block";
-                        PersoPpal.attack=7;
+                        PersoPpal.attack = 7;
 
                     }
                     break;
-            
+
                 default:
                     if (daguePossessed === true) {
                         document.getElementById("daggerTrue").style.display = "block";
@@ -249,7 +247,7 @@ function commande() {
                             document.getElementById("searchSecondCagibiWin").style.display = "block";
                             break;
 
-                        case 1 :
+                        case 1:
                             document.getElementById("searchSecondCagibiLoose").style.display = "block";
                             break
 
@@ -275,7 +273,7 @@ function commande() {
         case 'frapper':
         case 'assaillir':
         case 'prendre à partie':
-        
+
             switch (position) {
                 case room[2]:
                     if (deadGarde == false) {
@@ -285,46 +283,49 @@ function commande() {
                         if (Garde.life <= 0) {
                             deadGarde = true;
                             swordIsUnlocked = true;
-                            document.getElementById("swordDrop").style.display = "block";
+                            document.getElementById("gardeDead").style.display = "block";
                         }
                         if (PersoPpal.life <= 0) {
                             gameOverScreen.style.display = 'block';
                         }
                     } else {
-                        document.getElementById("gardeDead").style.display = "block";
+                        document.getElementById("swordDrop").style.display = "block";
                         break;
                     }
 
                     break;
                 case room[7]:
-                    if (Gobelin.life<=0) {
-                        deadGobelin = true;
-                        document.getElementById("gobelinDead").style.display = "block";
-                    }
-                    if (PersoPpal.life <= 0){
-                        gameOverScreen.style.display = 'block'
-                    }
-                    if (deadGobelin == true) {
+                    if (deadGobelin == false) {
+                        fight(PersoPpal, Gobelin);
+                        if (Gobelin.life <= 0) {
+                            deadGobelin = true;
+                            document.getElementById("gobelinDead").style.display = "block";
+                        }
+                        if (PersoPpal.life <= 0) {
+                            gameOverScreen.style.display = 'block'
+                        }
+                    } else {
                         document.getElementById("gobelinDeadAllready").style.display = "block";
                         break;
                     }
-                    fight(PersoPpal, Gobelin);
-                    
+
                     break;
                 case room[9]:
-                    if (Boss.life<=0) {
-                        deadBoss = true;
-                        document.getElementById("bossDead").style.display = "block";
-                        window.location.href="end.html";
-                    }
-                    if (PersoPpal.life <= 0){
-                        gameOverScreen.style.display = 'block'
-                    }
-                    if (deadBoss == true) {
+                    if (deadBoss == false) {
+                        fight(PersoPpal, Boss);
+                        if (Boss.life <= 0) {
+                            deadBoss = true;
+                            document.getElementById("bossDead").style.display = "block";
+                            window.location.href = "end.html";
+                        }
+                        if (PersoPpal.life <= 0) {
+                            gameOverScreen.style.display = 'block'
+                        }
+                    } else {
                         document.getElementById("bossDeadAllready").style.display = "block";
                         break;
                     }
-                    fight(PersoPpal, Boss);
+
                     break;
 
                 default:
@@ -343,7 +344,7 @@ function commande() {
         case 'lire':
         case 'livre':
             switch (position) {
-                case room [14]:
+                case room[14]:
                     position = room[14];
                     document.getElementById("indiceEnigme").style.display = "block";
                     indice = true;
@@ -368,8 +369,8 @@ function commande() {
         case 'palabrer':
         case 'pérorer':
         case 'tailler le bout de gras':
-            switch(position) {
-                case room [3]:
+            switch (position) {
+                case room[3]:
                     position = room[3];
                     if (porteDeCelluleUnlocked === true) {
                         if (indice === true) {
@@ -385,7 +386,7 @@ function commande() {
                         document.getElementById("dialPrisonnier3").style.display = "block";
                         break;
                     }
-                case room [2]:
+                case room[2]:
                     position = room[2];
                     if (deadGarde === true) {
                         document.getElementById("dialGardeDead").style.display = "block";
@@ -395,7 +396,7 @@ function commande() {
                         document.getElementById("dialGarde").style.display = "block";
                         break;
                     }
-                case room [7]:
+                case room[7]:
                     position = room[7];
                     if (deadGobelin === true) {
                         document.getElementById("dialGobelinDead").style.display = "block";
@@ -405,7 +406,7 @@ function commande() {
                         document.getElementById("dialGobelin").style.display = "block";
                         break;
                     }
-                case room [9]:
+                case room[9]:
                     position = room[9];
                     if (deadBoss === true) {
                         document.getElementById("dialBossDead").style.display = "block";
@@ -521,7 +522,6 @@ function commande() {
                 case room[3]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[6]:
@@ -570,7 +570,6 @@ function commande() {
                 case room[0]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -632,7 +631,6 @@ function commande() {
                 case room[0]:
                     position = room[13];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -671,7 +669,7 @@ function commande() {
                 case room[13]:
                     if (trapActivated == false) {
                         document.getElementById("trapActivated").style.display = "block";
-                        PersoPpal.life=PersoPpal.life-15;
+                        PersoPpal.life = PersoPpal.life - 15;
                         console.log(PersoPpal)
                         trapActivated = true;
                     }
@@ -707,7 +705,6 @@ function commande() {
                 case room[4]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -723,7 +720,6 @@ function commande() {
                 case room[0]:
                     position = room[6];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[9]:
@@ -742,40 +738,40 @@ function commande() {
                     break;
             }
             break;
-        
+
         // Permet de quitter la partie
-        case'quitter':
-            window.location.href ='main.html';
+        case 'quitter':
+            window.location.href = 'main.html';
             break;
 
         default:
             document.getElementById("invalidCommand").style.display = "block";
             break;
     }
-
+}
 
 //Permet d'avoir un int aléatoire
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
-  }
+}
 
 //Desscription des objets de l'inventaire
 function ChangeDescrption(event) {
-    console.log(event.target.id)
+    console.log(event.target.id);
     if (event.target.id.includes("clef") === true) {
-        clef.innerHTML = 'Ouvre une porte <br><br> "Non jure wallah"'
+        clef.innerHTML = 'Ouvre une porte <br><br> "Non jure wallah"';
     }
     else if (event.target.id.includes("epee") === true) {
-        clef.innerHTML = 'Epée basique en fer <br><br> Pemettra surement de ce defendre'
+        clef.innerHTML = 'Epée basique en fer <br><br> Vous gagnez pas mal d\'attaque avec cette arme';
     }
     else if (event.target.id.includes("master-sword") === true) {
-        clef.innerHTML = 'Epée légendaire'
+        clef.innerHTML = 'Epée légendaire <br><br> Vous gagnez beaucoup d\'attaque avec cette arme';
     }
     else if (event.target.id.includes("dague") === true) {
-        clef.innerHTML = 'Dague'
+        clef.innerHTML = 'Simple dague <br><br> Vous gagnez quelques points d\'attaque avec cette arme';
     }
     else {
-        clef.innerHTML = 'Sélectionne un objet'
+        clef.innerHTML = 'Sélectionne un objet';
     }
 
 }
@@ -801,22 +797,16 @@ function RoomText() {
     }
 }
 
-// Vérifie si les textes liés à la clef sont bien sur none
-function TextKeyNone() {
-    for (let i = 0; i < key.length; i++) {
-        if (key[i].style.display !== 'none')
-        key[i].style.display = 'none';
-    }
-}
-
 //fonction combats
 function fight(object1, object2) {
 
     document.getElementById("fightInitialized").style.display = "block";
     object1.attaquer(object1, object2);
-    if (object2.life>0) {
+    document.getElementById('stats-combat').style.display = "block";
+    document.getElementById('vie').innerHTML = 'Vous attaquez l\'ennemie, il lui reste ' + object2.life + 'PV';
+    if (object2.life > 0) {
         object2.attaquer(object2, object1);
-    
+        document.getElementById('vie').innerHTML += '<br><br> L\'ennemie vous attaque, il vous reste ' + object1.life + 'PV';
     }
     console.log("nouveaux PV main : " + object1.life);
     console.log("nouveaux PV ennemy : " + object2.life);
