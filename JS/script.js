@@ -42,7 +42,7 @@ class Character {
      randomAttaque(atq) {
          let min = atq - 2;
          let max = atq + 1;
-         if (min<+0) {
+         if (min<=0) {
              min=1;
          }
         return Math.floor(Math.random(min) * Math.floor(max));
@@ -50,8 +50,11 @@ class Character {
 }
 let PersoPpal = new Character(50, 5);
 let Boss = new Character(50, 5);
-let Gobelin = new Character(25, 2);
+let Gobelin = new Character(25, 3);
 let Garde = new Character(35, 4);
+
+//Variables relatives à la dague
+let daguePossessed = new Boolean(false);
 
 //Variables relatives à la clef
 let clef2 = new Boolean(false);
@@ -62,6 +65,10 @@ let porteDeCelluleUnlocked = new Boolean(false);
 let deadGobelin = new Boolean(false);
 let deadGarde = new Boolean(false);
 let deadBoss = new Boolean(false);
+
+//Variables relatives à la salle piégée 2
+let trapActivated = new Boolean(false);
+let trapSeen = new Boolean(false);
 
 //Fonction cotenant le switch de toutes les commandes disponibles avec l'input
 function commande() {
@@ -78,6 +85,63 @@ function commande() {
     }
 
     switch (commande) {
+        case 'piege': case 'piège':
+            switch (position) {
+                case room[13]:
+                    if (trapActivated == true) {
+                        window.alert("Le piège est déja désactivé")
+                        console.log(PersoPpal);
+                    }else if (trapSeen == true) {
+                        window.alert('Vous désarmez le piège')
+                        let trapTry = getRandomInt(3);
+                        console.log(trapTry);
+                        console.log(PersoPpal);
+                        if (trapTry == 3 || trapTry == 0) {
+                            trapActivated = true;
+                            window.alert("Le piège est désarmé")
+                            console.log(PersoPpal);
+                        }else{
+                            window.alert("Vous n'avez pas réussi à désarmer le piège")
+                            PersoPpal.life=PersoPpal.life-15;
+                            trapActivated=true;
+                            console.log(PersoPpal);
+                        }   
+                    }else{
+                        window.alert("Vous n'avez pas vu de piège")
+                        console.log(PersoPpal);
+                    }
+                    break;
+            
+                default:
+                    break;
+            }
+            break;
+
+        //Gestion de la dague
+        case 'dague':
+            switch (position) {
+                case room[12]:
+                    if (daguePossessed === true) {
+                        window.alert("Vous avez déja rammassé la dague")
+                    } else {
+                        daguePossessed = true;
+                        window.alert('Vous avez ramassé la dague')
+                        PersoPpal.attack=7;
+
+                    }
+                    break;
+            
+                default:
+                    if (daguePossessed === true) {
+                        window.alert("La dague est dans votre main, elle ne vous servira à rien ici")
+                    } else {
+                        window.alert("Vous n'avez pas la dague.")
+                    }
+                    break;
+            }
+            break;
+
+        //Permet d'indiquer ce que l'on peut ramasser
         case 'fouiller':
             switch (position) {
                 case room[4]:
@@ -89,6 +153,10 @@ function commande() {
                     break;
                 case room[12]:
                     window.alert('Lors de la fouille du débarras, vous notez qu\'il n\'y a rien d\'intéressant, hormis une petite dague.');
+                    break;
+                case room[13]:
+                    window.alert("Vous remarquez un piège près du côté est")
+                    trapSeen = true;
                     break;
 
                 default:
@@ -103,7 +171,7 @@ function commande() {
                             break
 
                         default:
-                            window.alert("Cette vous à menez à quelque chose");
+                            window.alert("Cette fouille vous à menez à quelque chose");
                             window.alert("Rien");
                             console.log(random);
                             break;
@@ -351,6 +419,12 @@ function commande() {
                     RoomText();
                     break;
                 case room[13]:
+                    if (trapActivated == false) {
+                        window.alert('Tu as activé un piège');
+                        PersoPpal.life=PersoPpal.life-15;
+                        console.log(PersoPpal)
+                        trapActivated = true;
+                    }
                     position = room[14];
                     console.log(position);
                     RoomText();
