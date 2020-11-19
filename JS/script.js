@@ -19,7 +19,13 @@ let position = room[0];
 console.log(position);
 RoomText();
 
+<<<<<<< Updated upstream
 const key = document.getElementsByClassName('key');
+=======
+
+const clef = document.getElementById("descriptionObjet");
+clef.addEventListener('click', descriptionObjet)
+>>>>>>> Stashed changes
 
 const clef = document.getElementById("descriptionObjet");
 clef.addEventListener('click', descriptionObjet);
@@ -59,6 +65,18 @@ let deadBoss = new Boolean(false);
 function commande() {
     let commande = myInput.value;
     console.log(commande);
+//Effacer les précédentes commandes
+    let x = document.getElementsByClassName("key");
+        let i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = 'none';
+        }
+
+    let y = document.getElementsByClassName("room");
+        let c;
+        for (c = 0; c < y.length; c++) {
+            y[c].style.display = 'none';
+        }
 
     switch (commande) {
 
