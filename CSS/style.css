@@ -86,6 +86,9 @@ td{
     transform: scale(1.1);
     cursor: pointer;
 }
+.objets{
+    display: none;
+}
 .room {
     display: none;
     margin-top: 40px;
@@ -109,7 +112,6 @@ td{
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
 }
-
 #gameOver {
     display: none;
     width: 100%;
@@ -117,7 +119,6 @@ td{
     position: absolute;
     top: 0; left: 0;
     background-color: rgba(0, 0, 0, 1);
-    justify-content: center;
-    
+    justify-content: center; 
 }
 
