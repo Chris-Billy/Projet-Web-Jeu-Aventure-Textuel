@@ -32,26 +32,28 @@ class Character {
     }
     attaquer(object1, object2) {
         object2.life = object2.life - this.randomAttaque(this.attack);
-        this.gameOverMethod(object2.life)
+        //this.gameOverMethod(object2.life)
     }
-    gameOverMethod(life) {
-        if (life <= 0) {
+    /*
+    gameOverMethod(object2) {
+        if (object2 <= 0) {
             window.alert('lennemie est mort');
         }
-    }
+    } */
+
      randomAttaque(atq) {
          let min = atq - 2;
          let max = atq + 1;
-         if (min<=0) {
-             min=1;
+         if (min <= 0) {
+             min = 1;
          }
         return Math.floor(Math.random(min) * Math.floor(max));
       }
 }
-let PersoPpal = new Character(50, 5);
+let PersoPpal = new Character(55, 5);
 let Boss = new Character(50, 5);
-let Gobelin = new Character(25, 3);
-let Garde = new Character(35, 4);
+let Gobelin = new Character(25, 2);
+let Garde = new Character(35, 55);
 
 //Variables relatives à la dague
 let daguePossessed = new Boolean(false);
@@ -65,6 +67,7 @@ let porteDeCelluleUnlocked = new Boolean(false);
 let deadGobelin = new Boolean(false);
 let deadGarde = new Boolean(false);
 let deadBoss = new Boolean(false);
+let deadPersoPpal = new Boolean(false);
 
 //Variables relatives à la salle piégée 2
 let trapActivated = new Boolean(false);
@@ -183,18 +186,27 @@ function commande() {
         case 'attaquer':
             switch (position) {
                 case room[2]:
+                    console.log(PersoPpal);
+                    console.log(Garde);
+                    fight(PersoPpal, Garde);
                     if (Garde.life <= 0) {
                         deadGarde = true;
+                    }
+                    if (PersoPpal.life <= 0){
+                        gameOverScreen.style.display = 'block'
                     }
                     if (deadGarde == true) {
                         window.alert('Le garde est déja mort');
                         break;
                     }
-                    fight(PersoPpal, Garde);
+
                     break;
                 case room[7]:
                     if (Gobelin.life <= 0) {
                         deadGobelin = true;
+                    }
+                    if (PersoPpal.life <= 0){
+                        gameOverScreen.style.display = 'block'
                     }
                     if (deadGobelin == true) {
                         window.alert('Le gobelin est déja mort');
@@ -206,6 +218,9 @@ function commande() {
                 case room[9]:
                     if (Boss.life <= 0) {
                         deadBoss = true;
+                    }
+                    if (PersoPpal.life <= 0){
+                        gameOverScreen.style.display = 'block'
                     }
                     if (deadBoss == true) {
                         window.alert('Le Boss est déja mort');
