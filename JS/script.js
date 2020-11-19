@@ -1,9 +1,16 @@
 // Valide l'input si on appuie sur la touche "entrée"
+let stockage;
 const myInput = document.getElementById('commande');
 myInput.onkeydown = function (event) {
+    // Si touche "Entrée" est appuyé : valide l'input
     if (event.which == 13) {
+        stockage = myInput.value;
         commande();
         myInput.value = '';
+    }
+    // Si touche "flêche du haut" est appuyé : rappelle l'ancienne valeur dans l'input
+    if (event.which == 38) {
+        myInput.value = stockage;
     }
 }
 
@@ -734,6 +741,9 @@ function ChangeDescrption(event) {
     }
     else if (event.target.id.includes("master-sword") === true) {
         clef.innerHTML = 'Epée légendaire'
+    }
+    else if (event.target.id.includes("dague") === true) {
+        clef.innerHTML = 'Dague'
     }
     else {
         clef.innerHTML = 'Sélectionne un objet'
