@@ -19,9 +19,8 @@ let position = room[0];
 console.log(position);
 RoomText();
 
-
 const key = document.getElementsByClassName('key');
-
+const objects = document.getElementsByClassName('objets');
 
 const clef = document.getElementById("descriptionObjet");
 clef.addEventListener('click', descriptionObjet);
@@ -43,22 +42,25 @@ class Character {
         }
     } */
 
-     randomAttaque(atq) {
-         let min = atq - 2;
-         let max = atq + 1;
-         if (min <= 0) {
-             min = 1;
-         }
+    randomAttaque(atq) {
+        let min = atq - 2;
+        let max = atq + 1;
+        if (min <= 0) {
+            min = 1;
+        }
         return Math.floor(Math.random(min) * Math.floor(max));
-      }
+    }
 }
-let PersoPpal = new Character(55, 5);
+let PersoPpal = new Character(55, 15);
 let Boss = new Character(50, 5);
 let Gobelin = new Character(25, 2);
-let Garde = new Character(35, 55);
+let Garde = new Character(35, 4);
 
 //Variables relatives à la dague
 let daguePossessed = new Boolean(false);
+let swordPossessed = new Boolean(false);
+let masterSwordPossessed = new Boolean(false);
+let swordIsUnlocked = new Boolean(false);
 
 //Variables relatives à la clef
 let clef2 = new Boolean(false);
@@ -78,17 +80,19 @@ let deadPersoPpal = new Boolean(false);
 //Variables relatives à la salle piégée 2
 let trapActivated = new Boolean(false);
 let trapSeen = new Boolean(false);
+let trapActivated2 = new Boolean(false);
+let trapSeen2 = new Boolean(false);
 
 //Fonction cotenant le switch de toutes les commandes disponibles avec l'input
 function commande() {
     let commande = myInput.value;
     console.log(commande);
-//Effacer les précédentes commandes
-    let x = document.getElementsByClassName("key");
-        let i;
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = 'none';
+    //Effacer les précédentes commandes
+    for (let i = 0; i < key.length; i++) {
+        if (key[i].style.display !== 'none') {
+            key[i].style.display = 'none';
         }
+    }
 
     switch (commande) {
         case 'piege': case 'piège':
@@ -97,8 +101,8 @@ function commande() {
                     if (trapActivated == true) {
                         window.alert("Le piège est déja désactivé")
                         console.log(PersoPpal);
-                    }else if (trapSeen == true) {
-                        window.alert('Vous désarmez le piège')
+                    } else if (trapSeen == true) {
+                        window.alert('Vous essayez de désarmer le piège')
                         let trapTry = getRandomInt(3);
                         console.log(trapTry);
                         console.log(PersoPpal);
@@ -106,18 +110,41 @@ function commande() {
                             trapActivated = true;
                             window.alert("Le piège est désarmé")
                             console.log(PersoPpal);
-                        }else{
+                        } else {
                             window.alert("Vous n'avez pas réussi à désarmer le piège")
-                            PersoPpal.life=PersoPpal.life-15;
-                            trapActivated=true;
+                            PersoPpal.life = PersoPpal.life - 15;
+                            trapActivated = true;
                             console.log(PersoPpal);
-                        }   
-                    }else{
+                        }
+                    } else {
                         window.alert("Vous n'avez pas vu de piège")
                         console.log(PersoPpal);
                     }
                     break;
-            
+                case room[1]:
+                    if (trapActivated2 == true) {
+                        window.alert("Le piège est déja désactivé")
+                        console.log(PersoPpal);
+                    } else if (trapSeen2 == true) {
+                        window.alert('Vous essayez de désarmer le piège')
+                        let trapTry = getRandomInt(3);
+                        console.log(trapTry);
+                        console.log(PersoPpal);
+                        if (trapTry == 3 || trapTry == 0) {
+                            trapActivated2 = true;
+                            window.alert("Le piège est désarmé")
+                            console.log(PersoPpal);
+                        } else {
+                            window.alert("Vous n'avez pas réussi à désarmer le piège")
+                            PersoPpal.life = PersoPpal.life - 15;
+                            trapActivated2 = true;
+                            console.log(PersoPpal);
+                        }
+                    } else {
+                        window.alert("Vous n'avez pas vu de piège")
+                        console.log(PersoPpal);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -132,11 +159,11 @@ function commande() {
                     } else {
                         daguePossessed = true;
                         window.alert('Vous avez ramassé la dague')
-                        PersoPpal.attack=7;
+                        PersoPpal.attack = PersoPpal.attack + 2;
 
                     }
                     break;
-            
+
                 default:
                     if (daguePossessed === true) {
                         window.alert("La dague est dans votre main, elle ne vous servira à rien ici")
@@ -147,19 +174,53 @@ function commande() {
             }
             break;
 
+        case 'epee': case 'épée':
+            switch (position) {
+                case room[2]:
+                    if (deadGarde == true) {
+                        if (swordPossessed === true) {
+                            window.alert('Vous avez déjà ramassé l\'épée')
+                        } else {
+                            swordPossessed = true;
+                            window.alert('Vous ramassez l\'épée')
+                            console.log("votre attack avant : " + PersoPpal.attack);
+                            PersoPpal.attack += 4;
+                            console.log("votre attack après : " + PersoPpal.attack);
+                        }
+                    } else {
+                        window.alert('Pour prendre l\'épée, il faut vaincre les gardes')
+                    }
+                    break;
+
+                default:
+                    if (swordPossessed === true) {
+                        window.alert("L'épée est dans votre main, elle ne vous servira à rien ici")
+                    } else {
+                        window.alert("Vous n'avez pas d'épée'.")
+                    }
+                    break;
+            }
+            break;
+
         //Permet d'indiquer ce que l'on peut ramasser
         case 'fouiller':
-        case 'chercher':
-        case 'looter':
-        case 'chiner':
-        case 'farfouiller':
             switch (position) {
+                case room[1]:
+                    window.alert("Vous remarquez un piège près du côté sud");
+                    trapSeen2 = true;
+                    break;
+                case room[2]:
+                    if (swordIsUnlocked == true) {
+                        window.alert('Vous pourriez être intéressé par l\'épée que les gardes ont laissé derrière eux');
+                    } else {
+                        window.alert("La seule qui pourrait vous intéresser ici est l'épée que détiennent les gardes");
+                    }
+                    break;
                 case room[4]:
                     window.alert('Lors de la fouille du débaras, vous remarquez une clef');
                     break;
                 case room[8]:
                     window.alert('Vous decidez de fouiller la salle secrète, il s\'y trouve une épée assez particulière.\n Bon c\'est l\'épée légendaire fait pas genre t\'as pas compris');
-
                     break;
                 case room[12]:
                     window.alert('Lors de la fouille du débarras, vous notez qu\'il n\'y a rien d\'intéressant, hormis une petite dague.');
@@ -176,7 +237,7 @@ function commande() {
                             window.alert("Vous ne trouvez rien d'intéréssant");
                             break;
 
-                        case 1 :
+                        case 1:
                             window.alert("Malgré la fouille, il n'y a rien qui sucite votre intérêt");
                             break
 
@@ -189,56 +250,48 @@ function commande() {
                     break;
             }
             break;
+
         //Permet d'attaquer la cible actuelle
         case 'attaquer':
-        case 'combattre':
-        case 'casser la gueule':
-        case 'goumer':
-        case 'défoncer':
-        case 'affronter':
-        case 'aggresser':
-        case 'attaque':
-        case 'frapper':
-        case 'assaillir':
-        case 'prendre à partie':
-        
             switch (position) {
                 case room[2]:
-
-                    console.log(PersoPpal);
-                    console.log(Garde);
-                    fight(PersoPpal, Garde);
-                    if (Garde.life <= 0) {
-                        deadGarde = true;
-                    }
-                    if (PersoPpal.life <= 0){
-                        gameOverScreen.style.display = 'block'
-                    }
-                    if (deadGarde == true) {
+                    if (deadGarde == false) {
+                        console.log(PersoPpal);
+                        console.log(Garde);
+                        fight(PersoPpal, Garde);
+                        if (Garde.life <= 0) {
+                            deadGarde = true;
+                            swordIsUnlocked = true;
+                            window.alert('Vous venez de tuer les gardes , vous remarquez qu\'ils laissent tomber un objet.');
+                        }
+                        if (PersoPpal.life <= 0) {
+                            gameOverScreen.style.display = 'block';
+                        }
+                    } else {
                         window.alert('Le garde est déja mort');
-                        break;
                     }
 
                     break;
                 case room[7]:
-                    if (Gobelin.life<=0) {
-                        deadGobelin = true;
-                    }
-                    if (PersoPpal.life <= 0){
-                        gameOverScreen.style.display = 'block'
-                    }
-                    if (deadGobelin == true) {
+                    if (deadGobelin == false) {
+                        fight(PersoPpal, Gobelin);
+                        if (Gobelin.life <= 0) {
+                            deadGobelin = true;
+                            window.alert('Vous venez de tuer le gobelin');
+                        }
+                        if (PersoPpal.life <= 0) {
+                            gameOverScreen.style.display = 'block'
+                        }
+                    } else {
                         window.alert('Le gobelin est déja mort');
-                        break;
                     }
-                    fight(PersoPpal, Gobelin);
-                    
+
                     break;
                 case room[9]:
-                    if (Boss.life<=0) {
+                    if (Boss.life <= 0) {
                         deadBoss = true;
                     }
-                    if (PersoPpal.life <= 0){
+                    if (PersoPpal.life <= 0) {
                         gameOverScreen.style.display = 'block'
                     }
                     if (deadBoss == true) {
@@ -256,14 +309,14 @@ function commande() {
 
         //Permet d'ouvrir l'inventaire
         case 'inventaire':
+            DisplayObjects();
             Inventory.style.display = 'block';
             break;
 
         //Permet de lire l'indice de l'énigme
         case 'lire':
-        case 'livre':
             switch (position) {
-                case room [14]:
+                case room[14]:
                     position = room[14];
                     document.getElementById("indiceEnigme").style.display = "block";
                     indice = true;
@@ -288,8 +341,8 @@ function commande() {
         case 'palabrer':
         case 'pérorer':
         case 'tailler le bout de gras':
-            switch(position) {
-                case room [3]:
+            switch (position) {
+                case room[3]:
                     position = room[3];
                     if (porteDeCelluleUnlocked === true) {
                         if (indice === true) {
@@ -305,7 +358,7 @@ function commande() {
                         document.getElementById("dialPrisonnier3").style.display = "block";
                         break;
                     }
-                case room [2]:
+                case room[2]:
                     position = room[2];
                     if (deadGarde === true) {
                         document.getElementById("dialGardeDead").style.display = "block";
@@ -315,7 +368,7 @@ function commande() {
                         document.getElementById("dialGarde").style.display = "block";
                         break;
                     }
-                case room [7]:
+                case room[7]:
                     position = room[7];
                     if (deadGobelin === true) {
                         document.getElementById("dialGobelinDead").style.display = "block";
@@ -325,7 +378,7 @@ function commande() {
                         document.getElementById("dialGobelin").style.display = "block";
                         break;
                     }
-                case room [9]:
+                case room[9]:
                     position = room[9];
                     if (deadBoss === true) {
                         document.getElementById("dialBossDead").style.display = "block";
@@ -437,7 +490,6 @@ function commande() {
                 case room[3]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[6]:
@@ -486,7 +538,6 @@ function commande() {
                 case room[0]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -548,7 +599,6 @@ function commande() {
                 case room[0]:
                     position = room[13];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -587,7 +637,7 @@ function commande() {
                 case room[13]:
                     if (trapActivated == false) {
                         window.alert('Tu as activé un piège');
-                        PersoPpal.life=PersoPpal.life-15;
+                        PersoPpal.life = PersoPpal.life - 15;
                         console.log(PersoPpal)
                         trapActivated = true;
                     }
@@ -623,7 +673,6 @@ function commande() {
                 case room[4]:
                     position = room[1];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[1]:
@@ -639,7 +688,6 @@ function commande() {
                 case room[0]:
                     position = room[6];
                     console.log(position);
-                    TextKeyNone();
                     RoomText();
                     break;
                 case room[9]:
@@ -658,10 +706,10 @@ function commande() {
                     break;
             }
             break;
-        
+
         // Permet de quitter la partie
-        case'quitter':
-            window.location.href ='main.html';
+        case 'quitter':
+            window.location.href = 'main.html';
             break;
 
         default:
@@ -669,10 +717,11 @@ function commande() {
             break;
     }
 }
+
 //Permet d'avoir un int aléatoire
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
-  }
+}
 
 //Desscription des objets de l'inventaire
 function ChangeDescrption(event) {
@@ -713,23 +762,31 @@ function RoomText() {
     }
 }
 
-// Vérifie si les textes liés à la clef sont bien sur none
-function TextKeyNone() {
-    for (let i = 0; i < key.length; i++) {
-        if (key[i].style.display !== 'none')
-        key[i].style.display = 'none';
-    }
-}
-
 //fonction combats
 function fight(object1, object2) {
 
     window.alert('Combat engagé')
     object1.attaquer(object1, object2);
-    if (object2.life>0) {
+    if (object2.life > 0) {
         object2.attaquer(object2, object1);
-    
+
     }
-    console.log(object1);
-    console.log(object2);
+    console.log("nouveaux PV main : " + object1.life);
+    console.log("nouveaux PV ennemy : " + object2.life);
+}
+
+// Afficher les objets dans l'inventaire
+function DisplayObjects() {
+    if (clef2 === true) {
+        objects[0].style.display = 'block';
+    }
+    if (swordPossessed === true) {
+        objects[1].style.display = 'block';
+    }
+    if (masterSwordPossessed === true) {
+        objects[2].style.display = 'block';
+    }
+    if (daguePossessed === true) {
+        objects[3].style.display = 'block';
+    }
 }
