@@ -63,7 +63,7 @@ function commande() {
     //Effacer les précédentes commandes
     let key = document.getElementsByClassName("key");
 
-    for (let i = 0; i < x.length; i++) {
+    for (let i = 0; i < key.length; i++) {
         if (key[i].style.display !== 'none') {
             key[i].style.display = 'none';
         }
