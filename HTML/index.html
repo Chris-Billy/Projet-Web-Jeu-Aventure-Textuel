@@ -355,11 +355,192 @@
             </p>
         </div>
         <!--div correspondant à la tentative d'accéder au Boss si l'énigme n'est pas validée-->
-        <div class="room" id="bossWrong">
+        <div class="key" id="bossWrong">
             <p>
                 La gargouille bloque l'accès.
             </p>
         </div>
+        <!--div indiquant qu'on se trouve face à un mur-->
+        <div class="key" id="roomWrong">
+            <p>
+                Vous ne pouvez pas aller plus loin.
+            </p>
+        </div>
+        <!--div indiquant que le piège est désactivé-->
+        <div class="key" id="piegeNeutralized">
+            <p>
+                Le piège est déjà désactivé.
+            </p>
+        </div>
+        <!--div indiquant que le piège est en train d'être désamorcé-->
+        <div class="key" id="piegeNeutralizing">
+            <p>
+                Vous tentez de désamorcer le piège.
+            </p>
+        </div>
+        <!--div indiquant que le piège a été désamorcé-->
+        <div class="key" id="piegeSucces">
+            <p>
+                Vous désamorcez le piège avec succès.
+            </p>
+        </div>
+        <!--div indiquant que le piège na pas pu être désamorcé-->
+        <div class="key" id="piegeFailure">
+            <p>
+                Alors que vous tentez de désamorcer le piège, celui-ci se déclenche et vous tire une flèche dans l'épaule.
+            </p>
+        </div>
+        <!--div indiquant qu'il n'y a pas de piège-->
+        <div class="key" id="piegeNone">
+            <p>
+                Vous ne voyez aucun piège à l'horizon.
+            </p>
+        </div>
+        <!--div indiquant que la dague a été ramassée-->
+        <div class="key" id="daggerPossesed">
+            <p>
+                Vous avez déjà ramassé la dague.
+            </p>
+        </div>
+        <!--div indiquant que le joueur ramasse la dague-->
+        <div class="key" id="daggerGet">
+            <p>
+                Vous ramassez la dague et la passez à votre ceinture. Vous avez la sombre impression que vous risquez d'en avoir besoin bientôt.
+            </p>
+        </div>
+        <!--div indiquant que le joueur est en possession de la dague-->
+        <div class="key" id="daggerTrue">
+            <p>
+                Vous examinez la dague que vous tenez serrée dans votre poing. Son contact froid et métallique vous rassure.
+            </p>
+        </div>
+        <!--div indiquant que le joueur n'a pas de dague-->
+        <div class="key" id="daggerFalse">
+            <p>
+                C'est vrai que ça pourrait vous être utile.
+            </p>
+        </div>
+        <!--div correspondant à la fouille du débarras-->
+        <div class="key" id="searchCagibi">
+            <p>
+                En fouillant le débarras, vous remarquez une clef luisant au fond d'un seau.
+            </p>
+        </div>
+        <!--div correspondant à la fouille de la salle secrète-->
+        <div class="key" id="searchSecret">
+            <p>
+                Au centre de la salle se trouve une épée magnifique.
+            </p>
+        </div>
+        <!--div correspondant à la fouille du couloir piégé-->
+        <div class="key" id="searchTrap">
+            <p>
+                En examinant attentativement le mur, vous remarquez qu'une entaille contient ce qui semble être un piège.
+            </p>
+        </div>
+        <!--div correspondant à la fouille victorieuse du deuxième débarras-->
+        <div class="key" id="searchSecondCagibiWin">
+            <p>
+                Vous ne trouvez rien, hormis une vieille dague.
+            </p>
+        </div>
+        <!--div correspondant à l'échec de la fouille du deuxième débarras-->
+        <div class="key" id="searchSecondCagibiLoose">
+            <p>
+                Malgré tous vos efforts, vous ne trouvez rien.
+            </p>
+        </div>
+        <!--div correspondant à une fouille random-->
+        <div class="key" id="searchRandom">
+            <p>
+                Cette recherche vous a mené à quelque chose...
+            </p>
+        </div>
+        <!--div correspondant à la mort du garde-->
+        <div class="key" id="gardeDead">
+            <p>
+                Le garde titube et s'effondre dans une marre de sang. Il laisse tomber un objet.
+            </p>
+        </div>
+        <!--div confirmanbt la mort du garde-->
+        <div class="key" id="gardeDeadAllready">
+            <p>
+                Le cadavre du garde git dans une marre de son propre sang.
+            </p>
+        </div>
+        <!--div correspondant à la mort du gobelin-->
+        <div class="key" id="gobelinDead">
+            <p>
+                La créature s'effondre avec un hurlement déchirrant.
+            </p>
+        </div>
+        <!--div correspondant au fait que le gobelin est déjà mort-->
+        <div class="key" id="gobelinDeadAllready">
+            <p>
+                Les restes sanglants de la créature forment un tas grotesque dans un coin de la salle.
+            </p>
+        </div>
+        <!--div correspondant à la mort du boss-->
+        <div class="key" id="bossDead">
+            <p>
+                Le géant s'écroule, vaincu.
+            </p>
+        </div>
+        <!--div indiquant que le boss est déjà mort-->
+        <div class="key" id="bossDeadAllready">
+            <p>
+                Le géant est déjà mort.
+            </p>
+        </div>
+        <!--div indiquant que le joueur tente d'attaquer personne-->
+        <div class="key" id="fightNoOne">
+            <p>
+                Tu veux attaquer qui ? Le mur ?
+            </p>
+        </div>
+        <!--div indiquant que la porte nord est verrouillée-->
+        <div class="key" id="gateLocked">
+            <p>
+                La porte est verrouillée.
+            </p>
+        </div>
+        <!--div indiquant que joueur déclenche un piège en tentant d'ouvrir la porte-->
+        <div class="key" id="trapActivated">
+            <p>
+                Alors que vous vous approchez de la porte, vous entendez un son sec. Vous avez déclenché un piège et un projectile s'est planté dans votre dos.
+            </p>
+        </div>
+        <!--div indiquant sue le joueur a entré une commande invalide-->
+        <div class="key" id="invalidCommand">
+            <p>
+                Je n'ai pas compris, veuillez entrer une commande valide.
+            </p>
+        </div>
+        <!--div indiquant que le joueur a engagé un combat-->
+        <div class="key" id="fightInitialized">
+            <p>
+                Le combat s'engage.
+            </p>
+        </div>
+        <!--div indiquant que le joueur tente de se saisir de l'épée secrète-->
+        <div class="key" id="swordCheh">
+            <p>
+                Not Yet Implemented (Cheh).
+            </p>
+        </div>
+        <!--div indiquant que le joueur cherche une épée-->
+        <div class="key" id="swordNone">
+            <p>
+                Vous ne voyez rien de tel dans les parages.
+            </p>
+        </div>
+        <!--div indiquant que le joueur n'a pas trouvé de piège-->
+        <div class="key" id="checkTrapFailed">
+            <p>
+                Vous n'apercevez aucun piège.
+            </p>
+        </div>
+
     </div>
 
     <div id="form">
