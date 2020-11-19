@@ -31,7 +31,7 @@ class Character {
         this.attack = attack;
     }
     attaquer(object1, object2) {
-        object2.life = object2.life - this.attack;
+        object2.life = object2.life - this.randomAttaque(this.attack);
         this.gameOverMethod(object2.life)
     }
     gameOverMethod(life) {
@@ -39,6 +39,14 @@ class Character {
             window.alert('lennemie est mort');
         }
     }
+     randomAttaque(atq) {
+         let min = atq - 2;
+         let max = atq + 1;
+         if (min<+0) {
+             min=1;
+         }
+        return Math.floor(Math.random(min) * Math.floor(max));
+      }
 }
 let PersoPpal = new Character(50, 5);
 let Boss = new Character(50, 5);
