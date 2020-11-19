@@ -420,7 +420,6 @@ function commande() {
                     if (porteNordUnlocked === true) {
                         position = room[11];
                         console.log(position);
-                        TextKeyNone();
                         RoomText();
                         break;
                     }
