@@ -63,6 +63,10 @@ let Boss = new Character(50, 5);
 let Gobelin = new Character(25, 2);
 let Garde = new Character(35, 4);
 
+// On récupère la vie du joueur
+document.getElementById('player').max = PersoPpal.life;
+document.getElementById('player').value = PersoPpal.life;
+
 //Variables relatives à la dague
 let daguePossessed = new Boolean(false);
 let swordPossessed = new Boolean(false);
@@ -586,6 +590,7 @@ function commande() {
                     position = room[6];
                     console.log(position);
                     RoomText();
+                    LifeBarEnemyDisplay();
                     break;
                 case room[9]:
                     position = room[10];
@@ -642,6 +647,7 @@ function commande() {
                     position = room[1];
                     console.log(position);
                     RoomText();
+                    LifeBarEnemyDisplay();
                     break;
                 case room[5]:
                     position = room[6];
@@ -726,6 +732,7 @@ function commande() {
                     position = room[10];
                     console.log(position);
                     RoomText();
+                    LifeBarEnemyDisplay();
                     break;
                 case room[14]:
                     position = room[13];
@@ -799,13 +806,33 @@ function RoomText() {
 
 //fonction combats
 function fight(object1, object2) {
+    // On récupère le niveau des barres de vie
+    if (object2 == Gobelin && Gobelin.life === 25) {
+        document.getElementById('enemy').max = object2.life;
+        document.getElementById('enemy').value = object2.life;
+    }
+    if (object2 == Garde && Garde.life === 35) {
+        document.getElementById('enemy').max = object2.life;
+        document.getElementById('enemy').value = object2.life;
+    }
+    if (object2 == Boss && Boss.life === 50) {
+        document.getElementById('enemy').max = object2.life;
+        document.getElementById('enemy').value = object2.life;
+    }
+    // On affiche récupère l'état des barres de vie et affiche celle de l'ennemi
+    document.getElementById('player').value = object1.life;
+    document.getElementById('enemy').value = object2.life;
+    document.getElementById('enemy-life').style.display = 'block';
 
     document.getElementById("fightInitialized").style.display = "block";
     object1.attaquer(object1, object2);
     document.getElementById('stats-combat').style.display = "block";
+    document.getElementById('enemy').value = object2.life;
     document.getElementById('vie').innerHTML = 'Vous attaquez l\'ennemie, il lui reste ' + object2.life + 'PV';
+
     if (object2.life > 0) {
         object2.attaquer(object2, object1);
+        document.getElementById('player').value = object1.life;
         document.getElementById('vie').innerHTML += '<br><br> L\'ennemie vous attaque, il vous reste ' + object1.life + 'PV';
     }
     console.log("nouveaux PV main : " + object1.life);
@@ -825,5 +852,11 @@ function DisplayObjects() {
     }
     if (daguePossessed === true) {
         objects[3].style.display = 'block';
+    }
+}
+
+function LifeBarEnemyDisplay () {
+    if (document.getElementById('enemy-life').style.display === 'block') {
+        document.getElementById('enemy-life').style.display = 'none';
     }
 }
