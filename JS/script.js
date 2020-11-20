@@ -58,7 +58,7 @@ class Character {
         return Math.floor(Math.random(min) * Math.floor(max));
     }
 }
-let PersoPpal = new Character(55, 15);
+let PersoPpal = new Character(55, 10);
 let Boss = new Character(50, 5);
 let Gobelin = new Character(25, 2);
 let Garde = new Character(35, 4);
@@ -201,6 +201,7 @@ function commande() {
                     } else {
                         document.getElementById("swordFight").style.display = "block";
                     }
+                    break;
                 case room[8]:
                     document.getElementById("swordCheh").style.display = "block";
                     break;
@@ -727,12 +728,6 @@ function commande() {
                     position = room[6];
                     console.log(position);
                     RoomText();
-                    break;
-                case room[9]:
-                    position = room[10];
-                    console.log(position);
-                    RoomText();
-                    LifeBarEnemyDisplay();
                     break;
                 case room[14]:
                     position = room[13];
